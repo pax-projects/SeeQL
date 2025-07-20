@@ -1,0 +1,13 @@
+@use "../vars" as *;
+
+button.default-button {
+	width: fit-content;
+	height: 60px;
+	padding: 5px 10px;
+
+	background-color: $default-button-color;
+
+	box-shadow: 0 0 10px rgba($default-button-color, .25);
+
+	color: white;
+}
