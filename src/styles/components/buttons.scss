@@ -1,0 +1,22 @@
+@use "../vars" as *;
+
+button {
+	cursor: pointer;
+	
+	&.default-button {
+		width: fit-content;
+		min-height: 30px;
+		height: fit-content;
+		padding: 15px 40px;
+
+		background-color: $default-button-color;
+
+		border: none;
+		border-radius: 10px;
+
+		box-shadow: 0 0 10px rgba($default-button-color, .25);
+
+		color: white;
+		font-size: 20px;
+	}
+}

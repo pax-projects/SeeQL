@@ -1,0 +1,73 @@
+@use "vars" as *;
+
+/* Flex classes */
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-col-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-col-between {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.flex-col-around {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.flex-col-evenly {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-row-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-row-between {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.flex-row-around {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.flex-row-evenly {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.grid-center {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+/* --- Flex classes --- */
+
+/* Stylished */
+
+/* --- Stylished --- */

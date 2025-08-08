@@ -1,0 +1,111 @@
+@use "../vars" as *;
+
+details {
+	margin-top: 10px;
+
+	background: $background-color;
+
+	&:before {
+		content: "";
+
+		width: 1px;
+		height: 100%;
+
+		background-color: lightgrey;
+
+		transform: translateX(13.5px);
+
+		display: block;
+		position: absolute;
+		z-index: 0;
+	}
+
+	* {
+		background: $background-color;
+
+		position: relative;
+
+		z-index: 1;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	div {
+		padding: 5px 30px 5px 30px;
+
+		border-radius: 5px;
+
+		cursor: pointer;
+
+		user-select: none;
+
+		transition: .2s;
+
+		&:hover {
+			background-color: #eceef2;
+		}
+	}
+
+	& > summary {
+		width: 100%;
+		padding: 5px 30px 5px 30px;
+
+		gap: 5px;
+
+		box-sizing: border-box;
+
+		border-radius: 5px;
+
+		list-style-type: "";
+
+		cursor: pointer;
+
+		user-select: none;
+
+		transition: .2s;
+
+		&:hover {
+			background-color: #eceef2;
+
+			img {
+				background-color: #eceef2;
+			}
+		}
+
+		&:before {
+			content: "";
+
+			width: 16px;
+			height: 16px;
+
+			background-image: url('/src/assets/icons/chevron-right.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+
+			transform: translateX(-150%) translateY(10%);
+
+			position: absolute;
+		}
+	}
+
+	&[open] > summary {
+		list-style-type: "";
+
+		&:before {
+			content: "";
+
+			width: 16px;
+			height: 16px;
+
+			background-image: url('/src/assets/icons/chevron-down.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+
+			transform: translateX(-150%) translateY(10%);
+
+			position: absolute;
+		}
+	}
+}
