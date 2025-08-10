@@ -69,5 +69,12 @@
 /* --- Flex classes --- */
 
 /* Stylished */
-
+@mixin dotted-background {
+	background-image:
+		radial-gradient(#94949c 7%, transparent 7%),
+		radial-gradient(#94949c 7%, transparent 7%);
+	background-color: $background-color-dark-shade;
+	background-position: 0 0, 20px 20px;
+	background-size: 20px 20px;
+}
 /* --- Stylished --- */

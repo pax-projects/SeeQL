@@ -21,6 +21,7 @@
     "@electron-forge/plugin-fuses": "^7.5.0",
     "@electron-forge/plugin-vite": "^7.5.0",
     "@electron/fuses": "^1.8.0",
+    "@xyflow/react": "^12.8.2",
     "electron": "37.2.3",
     "react-arborist": "^3.4.3",
     "react-hook-form": "^7.62.0",

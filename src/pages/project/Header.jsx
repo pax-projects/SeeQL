@@ -1,12 +1,15 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
 	const location = useLocation();
 
+	const navigate = useNavigate();
+
 	return (
 		<header className="flex-col-between">
-			<div className="project_url">
-				
+			<div className="flex-row project_url">
+				<img src="/src/assets/icons/grid.svg" alt="home-icon" onClick={() => navigate("/home")}/>
+				<p onClick={() => navigate("/home")}>My projects / <span onClick={(e) => e.stopPropagation()}>The name of the project</span></p>
 			</div>
 			<nav className="flex-row project_tabs">
 				<Link to="overview" className={"tab_link" + (location.pathname.includes("overview") ? " selected" : "")}>

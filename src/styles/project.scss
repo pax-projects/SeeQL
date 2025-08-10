@@ -1,6 +1,7 @@
 @use "vars" as *;
+@use "classes" as *;
 
-$header-height: 100px;
+$header-height: 101px;
 
 #project {
 	width: 100%;
@@ -9,44 +10,40 @@ $header-height: 100px;
 	overflow: hidden;
 
 	header {
-
-		width: 100%;
 		height: $header-height;
 
-		background-color: $background-color;
-
-		border-bottom: 1px solid lightgrey;
-
-		.project_tabs {
-			margin-inline: 10px;
-			margin-bottom: -1px;
-
-			font: 20px;
+		.project_url {
+			height: 100%;
+			padding-left: 10px;
 
 			gap: 10px;
 
-			.tab_link {
-				padding-inline: 10px;
+			align-items: flex-end;
 
-				text-decoration: none;
+			img {
+				width: 28px;
+				height: 28px;
+				padding: 5px;
 
-				filter: opacity(.5);
+				// background: #F2F4F8;
 
-				.flex-row {
-					align-items: center;
+				border-radius: 5px;
+				border: 1.5px solid lightgrey;
 
-					gap: 5px;
-				}
+				cursor: pointer;
+			}
 
-				img {
-					width: 20px;
-					height: 20px;
-				}
+			p {
+				color: grey;
 
-				&.selected {
-					filter: opacity(1);
+				line-height: 38px;
 
-					border-bottom: 2px solid black;
+				cursor: pointer;
+
+				span {
+					color: black;
+
+					cursor: default;
 				}
 			}
 		}
@@ -60,12 +57,7 @@ $header-height: 100px;
 
 		box-sizing: border-box;
 
-		background-image:
-			radial-gradient(#E5E5E5 10%, transparent 10%),
-			radial-gradient(#E5E5E5 10%, transparent 10%);
-		background-color: $background-color;
-		background-position: 0 0, 15px 15px;
-		background-size: 15px 15px;
+		@include dotted-background;
 
 		position: relative;
 
@@ -77,7 +69,7 @@ $header-height: 100px;
 			width: 100%;
 			height: 100vh;
 
-			background: linear-gradient(to bottom, $background-color, transparent);
+			background: linear-gradient(to bottom, $background-color-dark-shade, transparent);
 
 			display: block;
 			position: absolute;
@@ -163,23 +155,5 @@ $header-height: 100px;
 	div#code_section {
 		width: 100%;
 		height: calc(100vh - $header-height - 1px);
-
-		background-image:
-			radial-gradient(#E5E5E5 10%, transparent 10%),
-			radial-gradient(#E5E5E5 10%, transparent 10%);
-		background-color: $background-color;
-		background-position: 0 0, 10px 10px;
-		background-size: 10px 10px;
-
-		&:before {
-			content: "";
-
-			width: 100%;
-			height: 100%;
-
-			background-color: rgba(0, 0, 0, .02);
-
-			display: block;
-		}
 	}
 }

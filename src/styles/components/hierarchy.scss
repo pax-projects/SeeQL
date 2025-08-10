@@ -5,6 +5,8 @@ details {
 
 	background: $background-color;
 
+	position: relative;
+
 	&:before {
 		content: "";
 
@@ -29,11 +31,27 @@ details {
 	}
 
 	a {
+		width: calc(100% - 27px);
+		margin-left: 27px;
+
+		display: block;
+
 		text-decoration: none;
+
+		box-sizing: border-box;
+
+		div {
+			box-sizing: border-box;
+		}
+	}
+
+	img {
+		background-color: transparent;
 	}
 
 	div {
-		padding: 5px 30px 5px 30px;
+		padding: 5px 5px 5px 5px;
+		margin-left: 20px;
 
 		border-radius: 5px;
 
@@ -43,8 +61,12 @@ details {
 
 		transition: .2s;
 
+		white-space: nowrap;
+
+		box-sizing: border-box;
+
 		&:hover {
-			background-color: #eceef2;
+			background-color: #F2F4F8;
 		}
 	}
 
@@ -67,11 +89,7 @@ details {
 		transition: .2s;
 
 		&:hover {
-			background-color: #eceef2;
-
-			img {
-				background-color: #eceef2;
-			}
+			background-color: #F2F4F8;
 		}
 
 		&:before {

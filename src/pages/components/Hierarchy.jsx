@@ -17,7 +17,7 @@ const File = ({ nodes, depth }) => {
 					</details>
 				) : (
 					<Link to={node.link}>
-						<div key={node.name} style={{marginLeft: "22px", minWidth: "fit-content"}}>
+						<div key={node.name} style={{minWidth: "fit-content"}}>
 							{ node.icon != null && <img src={node.icon} alt="icon"/> } {node.name}
 						</div>
 					</Link>

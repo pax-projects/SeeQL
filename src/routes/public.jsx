@@ -1,5 +1,7 @@
 import Landing from '../pages/landing/index';
 
+import Home from '../pages/home/index';
+
 import Project from '../pages/project/index';
 import Overview from '../pages/project/overview/index';
 import Docs from '../pages/project/docs/index';
@@ -22,6 +24,10 @@ export const publicRoutes = [{
 		path: "/landing",
 		element: <Landing />,
 	}]
+}, {
+	path: '/home',
+	element: <Home />,
+	errorElement: <NotFound />
 }, {
 	path: '/project/:id',
 	element: <Project />,
