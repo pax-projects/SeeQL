@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
 	ReactFlow,
 	Background,
@@ -9,20 +9,39 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
+import { useParams } from "react-router-dom";
+
 import Explorer from './Explorer.jsx';
 
-const initialNodes = [{ id: 'n1', position: { x: 0, y: 0 }, data: { label: 'Node 1' }
-}, {
-	id: 'n2', position: { x: 0, y: 100 }, data: { label: 'Node 2' }
-}];
-
-const initialEdges = [{ id: 'n1-n2', source: 'n1', target: 'n2' }];
-
 const CodePage = () => {
-	const [nodes, setNodes] = useState(initialNodes);
-	const [edges, setEdges] = useState(initialEdges);
+	const { id, file } = useParams();
+
+	const [nodes, setNodes] = useState([]);
+	const [edges, setEdges] = useState([]);
 
 	const [rfInstance, setRfInstance] = useState(null);
+
+	useEffect(() => {
+		(async () => {
+			const result = await window.electronAPI.loadJson(file);
+			if (result.success && result.data) {
+				console.log(result.data)
+				setNodes(result.data["nodes"]);
+				setEdges(result.data["edges"]);
+
+				console.log(result.data)
+			} else {
+				setNodes([]);
+				setEdges([]);
+			}
+		})();
+	}, [file]);
+
+	const saveFile = async () => {
+		const result = await window.electronAPI.saveJson({
+			[file]: rfInstance.toObject()
+		});
+	};
 
 	const onSave = useCallback(() => {
 		if (rfInstance) {
@@ -65,7 +84,7 @@ const CodePage = () => {
 						<button onClick={() => {}}>
 							restore
 						</button>
-						<button onClick={onSave}>
+						<button onClick={saveFile}>
 							save
 						</button>
 						{/* <button className="xy-theme__button" onClick={onAdd}> */}
@@ -79,3 +98,10 @@ const CodePage = () => {
 }
 
 export default CodePage;
+
+
+
+
+
+
+

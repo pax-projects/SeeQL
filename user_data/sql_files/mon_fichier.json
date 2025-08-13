@@ -1,0 +1,73 @@
+{
+  "[Tables][first_table][second_column][file_2]": {
+    "nodes": [],
+    "edges": [],
+    "viewport": {
+      "x": 126,
+      "y": 95.5,
+      "zoom": 2
+    }
+  },
+  "[Tables][first_table][second_column][file_1]": {
+    "nodes": [],
+    "edges": [],
+    "viewport": {
+      "x": 126,
+      "y": 95.5,
+      "zoom": 2
+    }
+  },
+  "[Tables][first_table][first_column][file_2]": {
+    "nodes": [],
+    "edges": [],
+    "viewport": {
+      "x": 126,
+      "y": 95.5,
+      "zoom": 2
+    }
+  },
+  "[Tables][first_table][first_column][file_1]": {
+    "nodes": [
+      {
+        "id": "n1",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "data": {
+          "label": "Node 1"
+        },
+        "measured": {
+          "width": 150,
+          "height": 35
+        }
+      },
+      {
+        "id": "n2",
+        "position": {
+          "x": 0,
+          "y": 100
+        },
+        "data": {
+          "label": "Node 2"
+        },
+        "measured": {
+          "width": 150,
+          "height": 35
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "n1-n2",
+        "source": "n1",
+        "target": "n2"
+      }
+    ],
+    "viewport": {
+      "x": 123.5,
+      "y": 95.5,
+      "zoom": 2
+    }
+  }
+}

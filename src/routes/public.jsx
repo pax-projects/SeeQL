@@ -39,7 +39,10 @@ export const publicRoutes = [{
 		path: "docs",
 		element: <Docs />
 	}, {
-		path: "code",
+		path: "code/",
+		element: <CodePage />,
+	}, {
+		path: "code/:file",
 		element: <CodePage />,
 	}, {
 		path: "code/:file",

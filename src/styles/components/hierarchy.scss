@@ -50,7 +50,7 @@ details {
 	}
 
 	div {
-		padding: 5px 5px 5px 5px;
+		padding: 4px 5px 4px 5px;
 		margin-left: 20px;
 
 		border-radius: 5px;
@@ -65,9 +65,9 @@ details {
 
 		box-sizing: border-box;
 
-		&:hover {
-			background-color: #F2F4F8;
-		}
+		&:hover { background-color: #F2F4F8; }
+
+		&.selected { background-color: #EDEFF4;}
 	}
 
 	& > summary {

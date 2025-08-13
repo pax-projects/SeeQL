@@ -26,12 +26,10 @@ const Explorer = () => {
 				children: [{
 					name: "file_1",
 					icon: null,
-					link: `/project/${id}/code/file_1`
 				},
 				{
 					name: "file_2",
 					icon: null,
-					link: `/project/${id}/code/file_2`
 				}]
 			},
 			{
@@ -40,12 +38,10 @@ const Explorer = () => {
 				children: [{
 					name: "file_1",
 					icon: null,
-					link: "/project/${id}/code/file_1"
 				},
 				{
 					name: "file_2",
 					icon: null,
-					link: "/project/${id}/code/file_2"
 				}]
 			}]
 		}, {
