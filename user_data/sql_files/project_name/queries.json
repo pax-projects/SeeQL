@@ -1,0 +1,48 @@
+{
+    "add-user": {
+        "nodes": [
+            {
+                "id": "n1",
+                "position": {
+                    "x": 0,
+                    "y": 0
+                },
+                "data": {
+                    "label": "Node 1"
+                },
+                "measured": {
+                    "width": 150,
+                    "height": 35
+                }
+            },
+            {
+                "id": "n2",
+                "position": {
+                    "x": 72.69831410404817,
+                    "y": 107.18008040533809
+                },
+                "data": {
+                    "label": "Node 2"
+                },
+                "measured": {
+                    "width": 150,
+                    "height": 35
+                },
+                "selected": true,
+                "dragging": false
+            }
+        ],
+        "edges": [
+            {
+                "id": "n1-n2",
+                "source": "n1",
+                "target": "n2"
+            }
+        ],
+        "viewport": {
+            "x": 625.7170063330507,
+            "y": 305.14132499173274,
+            "zoom": 1.1141936508193324
+        }
+    }
+}

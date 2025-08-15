@@ -23,7 +23,10 @@ const CodePage = () => {
 
 	useEffect(() => {
 		(async () => {
-			const result = await window.electronAPI.loadJson(file);
+			const result = await window.electronAPI.loadJson({
+				project_name: "project_name",
+				file: file
+			});
 			if (result.success && result.data) {
 				console.log(result.data)
 				setNodes(result.data["nodes"]);
@@ -39,7 +42,9 @@ const CodePage = () => {
 
 	const saveFile = async () => {
 		const result = await window.electronAPI.saveJson({
-			[file]: rfInstance.toObject()
+			project_name: "project_name",
+			file: file,
+			data: rfInstance.toObject()
 		});
 	};
 

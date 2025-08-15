@@ -1,31 +1,4 @@
 {
-  "[Tables][first_table][second_column][file_2]": {
-    "nodes": [],
-    "edges": [],
-    "viewport": {
-      "x": 126,
-      "y": 95.5,
-      "zoom": 2
-    }
-  },
-  "[Tables][first_table][second_column][file_1]": {
-    "nodes": [],
-    "edges": [],
-    "viewport": {
-      "x": 126,
-      "y": 95.5,
-      "zoom": 2
-    }
-  },
-  "[Tables][first_table][first_column][file_2]": {
-    "nodes": [],
-    "edges": [],
-    "viewport": {
-      "x": 126,
-      "y": 95.5,
-      "zoom": 2
-    }
-  },
   "[Tables][first_table][first_column][file_1]": {
     "nodes": [
       {
@@ -64,6 +37,15 @@
         "target": "n2"
       }
     ],
+    "viewport": {
+      "x": 123.5,
+      "y": 95.5,
+      "zoom": 2
+    }
+  },
+  "[Tables][first_table][first_column][file_2]": {
+    "nodes": [],
+    "edges": [],
     "viewport": {
       "x": 123.5,
       "y": 95.5,
