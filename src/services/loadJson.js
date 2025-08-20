@@ -8,8 +8,6 @@ function loadJson(data) {
 	let targetFile;
 	let fileKey;
 
-	console.log("FILE", data.file);
-
 	if (data.file.startsWith("[Tables]")) {
 		targetFile = path.join(baseDir, "tables.json");
 		fileKey = data.file.replace("[Tables]", "");
@@ -25,18 +23,25 @@ function loadJson(data) {
 	fileKey = fileKey.replace(/^\[|\]$/g, "");
 	fileKey = fileKey.split("][");
 
-	 console.log(fileKey);
-
 	// Si le fichier n’existe pas ou est vide → on retourne vide
-	if (!fs.existsSync(targetFile) || fs.statSync(targetFile).size === 0) {
+	if (!fs.existsSync(targetFile)) {
+		return { success: false, data: null };
+	}
+
+	if (fs.statSync(targetFile).size === 0) {
 		return { success: true, data: null };
 	}
 
 	// Lecture et parsing
 	const fileContent = JSON.parse(fs.readFileSync(targetFile, "utf-8"));
 
-	// On retourne la donnée correspondant à la clé
-	return { success: true, data: fileContent[fileKey[0]] ?? null };
+	console.log("FILE KEY:", fileKey);
+
+	if (fileKey[0] === '') {
+		return { success: true, data: fileContent }; // Table
+	} else {
+		return { success: true, data: fileContent[fileKey[0]] }; // Query
+	}
 }
 
 export { loadJson };

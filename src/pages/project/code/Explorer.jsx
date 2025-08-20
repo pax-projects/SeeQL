@@ -12,7 +12,7 @@ import processes from "../../../assets/icons/cpu.svg";
 import database from "../../../assets/icons/database.svg";
 import sql_file from "../../../assets/icons/sql_file.svg";
 
-import Hierarchy from "../../components/Hierarchy";
+import Hierarchy from "./components/Hierarchy";
 
 const Explorer = () => {
 	const { id } = useParams();
@@ -20,11 +20,11 @@ const Explorer = () => {
 	const [tables, setTables] = useState([{
 		name: "Tables",
 		icon: table_icon,
-		linkable: false,
+		linkable: true,
 		children: [{
 			name: "first_table",
 			icon: table_icon,
-			linkable: true,
+			linkable: false,
 			children: [
 			{
 				name: "Columns",
@@ -87,12 +87,12 @@ const Explorer = () => {
 		}, {
 			name: "second_table",
 			icon: table_icon,
-			linkable: true,
+			linkable: false,
 			children: []
 		}, {
 			name: "third_table",
 			icon: table_icon,
-			linkable: true,
+			linkable: false,
 			children: []
 		}]
 	}]);

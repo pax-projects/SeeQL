@@ -14,6 +14,8 @@ function saveJson(data) {
 	let targetFile;
 	let fileKey;
 
+	console.log(data, data.file);
+
 	// Determine which JSON file to use based on the prefix in data.file
 	if (data.file.startsWith("[Tables]")) {
 		// Store in tables.json and remove the "[Tables]" tag from the key
@@ -38,7 +40,13 @@ function saveJson(data) {
 		: {};
 
 	// Merge the new data into the existing JSON object
-	const newData = { ...fileContent, [fileKey[0]]: data.data };
+	let newData;
+	if (fileKey[0] === '') {
+		newData = { ...fileContent, ...data.data };
+	} else {
+		newData = { ...fileContent, [fileKey[0]]: data.data };
+	}
+	
 
 	// Write the merged data back to the file (pretty-printed with 2 spaces)
 	fs.writeFileSync(targetFile, JSON.stringify(newData, null, 4), "utf-8");

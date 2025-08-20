@@ -4,8 +4,6 @@ import { loadJson } from "../services/loadJson.js";
 
 function registerJsonHandlers() {
     ipcMain.handle("save-json", async (event, data) => {
-        console.log(data);
-
         try {
             return saveJson(data);
         } catch (e) {

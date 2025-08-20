@@ -1,0 +1,115 @@
+.react-flow__panel.bottom.center {
+	width: 100%;
+}
+
+#table-panel {
+	width: calc(100% - 30px);
+	height: 25vh;
+	padding: 10px;
+	margin: auto;
+
+	box-sizing: border-box;
+
+	background: white;
+
+	border-radius: 10px;
+
+	box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+
+	display: block;
+
+	.thead {
+		padding: 15px;
+
+		background-color: #F5F7FC;
+
+		border-radius: 5px;
+
+		cursor: default;
+
+		> div {
+			gap: 20px;
+
+			p {
+				width: 30px;
+				text-align: center;
+			}
+
+			p:not(p:last-child) {
+				&:before {
+					top: 0;
+					left: calc(100% + 10px);
+					content: "";
+
+					width: 1px;
+					height: 100%;
+
+					background: black;
+
+					position: absolute;
+				}
+
+				position: relative;
+			}
+		}
+	}
+
+	.tbody {
+		padding: 5px 15px;
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		input {
+			width: calc(90%/4);
+
+			border: none;
+			border-bottom: 2px solid #EFF1F6;
+			border-radius: 0;
+		}
+
+		.reorder-handle {
+			width: 18px;
+		}
+
+		.row-item {
+			margin-block: 2.5px;
+			padding: 10px;
+
+			background: white;
+
+			border: 2px solid white;
+			border-radius: 5px;
+
+			cursor: pointer;
+		}
+
+		div.checkboxes {
+			margin-right: 10px;
+			gap: 20px;
+
+			input {
+				width: 30px;
+			}
+
+			input:not(input:last-child) {
+				&:before {
+					top: 0;
+					left: calc(100% + 10px);
+					content: "";
+
+					width: .5px;
+					height: 100%;
+
+					background: black;
+
+					position: absolute;
+				}
+
+				position: relative;
+			}
+		}
+	}
+}

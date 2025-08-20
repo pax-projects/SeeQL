@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 
-import "../../styles/components/hierarchy.scss";
+import "../../../../styles/components/hierarchy.scss";
 
 const File = ({ nodes, depth, fullPath = "" }) => {
 	const { id, file } = useParams();

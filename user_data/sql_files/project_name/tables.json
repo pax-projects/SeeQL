@@ -1,7 +1,44 @@
 {
-	"first_table": {
-		"nodes": [],
-		"edges": [],
-		"viewport": {}
-	}
+    "nodes": [
+        {
+            "id": "n1",
+            "type": "table",
+            "position": {
+                "x": -62.301764945493794,
+                "y": -326.1391135289499
+            },
+            "data": {
+                "value": 123
+            },
+            "measured": {
+                "width": 174,
+                "height": 95
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "id": "n2",
+            "type": "table",
+            "position": {
+                "x": -448.05928189001133,
+                "y": -279.69077031092206
+            },
+            "data": {
+                "value": 123
+            },
+            "measured": {
+                "width": 174,
+                "height": 95
+            },
+            "selected": false,
+            "dragging": false
+        }
+    ],
+    "edges": [],
+    "viewport": {
+        "x": 449.4393517636485,
+        "y": 471.88041953090647,
+        "zoom": 0.945052069845511
+    }
 }

@@ -8,11 +8,11 @@
                     "y": 0
                 },
                 "data": {
-                    "label": "Node 1"
+                    "label": "INSERT"
                 },
                 "measured": {
-                    "width": 150,
-                    "height": 35
+                    "width": 65,
+                    "height": 37
                 }
             },
             {
@@ -22,11 +22,11 @@
                     "y": 107.18008040533809
                 },
                 "data": {
-                    "label": "Node 2"
+                    "label": "SELECT"
                 },
                 "measured": {
-                    "width": 150,
-                    "height": 35
+                    "width": 68,
+                    "height": 37
                 },
                 "selected": true,
                 "dragging": false
@@ -40,9 +40,18 @@
             }
         ],
         "viewport": {
-            "x": 625.7170063330507,
-            "y": 305.14132499173274,
-            "zoom": 1.1141936508193324
+            "x": 339.85667392138157,
+            "y": 276,
+            "zoom": 1.9281442985636412
+        }
+    },
+    "hard-delete-user": {
+        "nodes": [],
+        "edges": [],
+        "viewport": {
+            "x": 339.85667392138157,
+            "y": 276,
+            "zoom": 1.9281442985636412
         }
     }
 }
