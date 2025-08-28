@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import HandleWithValidation from "./HandleWithValidation";
+import InputAutosize from "./InputAutosize";
 
 const MultiFieldsComponent = ({ defaultValues, handlesID, onUpdate }) => {
 	const [fields, setFields] = useState(
@@ -58,7 +59,7 @@ const MultiFieldsComponent = ({ defaultValues, handlesID, onUpdate }) => {
 					<div className="flex-row nodrag row" key={field.id}>
 						<HandleWithValidation type="target" position="left" id={[`${handlesID}-${field.id}`, "listable-element-handle"]}/>
 
-						<input type="text" defaultValue={field.value} placeholder="column_name" onInput={e => handleInputUpdate(e, field.id)} />
+						<InputAutosize type="text" defaultValue={field.value} placeholder="column_name" onInput={e => handleInputUpdate(e, field.id)} />
 						{ fields.length > 1 && <button className="bin" onClick={(e) => delCol(e, field.id)}>-</button> }
 					</div>
 				)

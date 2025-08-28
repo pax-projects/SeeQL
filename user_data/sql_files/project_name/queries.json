@@ -5,8 +5,8 @@
                 "id": "n1",
                 "type": "select",
                 "position": {
-                    "x": 130,
-                    "y": -20
+                    "x": 92.25225432823586,
+                    "y": -24.04440132197473
                 },
                 "data": {
                     "handleRules": {
@@ -37,7 +37,7 @@
                     ]
                 },
                 "measured": {
-                    "width": 158,
+                    "width": 207,
                     "height": 260
                 },
                 "selected": false,
@@ -47,18 +47,18 @@
                 "id": "n2",
                 "type": "from",
                 "position": {
-                    "x": 344.1075514874142,
-                    "y": -19.956978846776405
+                    "x": 345.1075514874142,
+                    "y": -23.956978846776405
                 },
                 "data": {
                     "handleRules": {
                         "source": "single",
                         "target": "multiple"
                     },
-                    "field": "users AS u"
+                    "field": "users as u"
                 },
                 "measured": {
-                    "width": 158,
+                    "width": 207,
                     "height": 75
                 },
                 "selected": false,
@@ -68,8 +68,8 @@
                 "id": "n3",
                 "type": "join",
                 "position": {
-                    "x": 579.9678983087668,
-                    "y": 4.201206039852675
+                    "x": 626.3044466244804,
+                    "y": -23.887596604096785
                 },
                 "data": {
                     "handleRules": {
@@ -88,18 +88,18 @@
                     }
                 },
                 "measured": {
-                    "width": 158,
+                    "width": 207,
                     "height": 161
                 },
-                "selected": false,
+                "selected": true,
                 "dragging": false
             },
             {
                 "id": "n4",
                 "type": "where",
                 "position": {
-                    "x": 807.1088095992164,
-                    "y": -22.103825741597547
+                    "x": 912.2632439705594,
+                    "y": -23.25569196760597
                 },
                 "data": {
                     "handleRules": {
@@ -114,7 +114,7 @@
                     ]
                 },
                 "measured": {
-                    "width": 158,
+                    "width": 207,
                     "height": 95
                 },
                 "selected": false,
@@ -124,8 +124,8 @@
                 "id": "n5",
                 "type": "list",
                 "position": {
-                    "x": -93.4497621922358,
-                    "y": 118.68268338482537
+                    "x": -211.62794013027525,
+                    "y": 106.86486559102144
                 },
                 "data": {
                     "handleRules": {
@@ -160,10 +160,10 @@
                     "isOpenState": true
                 },
                 "measured": {
-                    "width": 158,
+                    "width": 207,
                     "height": 307
                 },
-                "selected": true,
+                "selected": false,
                 "dragging": false
             }
         ],
@@ -232,9 +232,9 @@
             }
         ],
         "viewport": {
-            "x": 74.5852381482548,
-            "y": 360.5259564353994,
-            "zoom": 0.5
+            "x": 332.8085285419205,
+            "y": 274.11396907116193,
+            "zoom": 0.784584097896752
         }
     },
     "hard-delete-user": {

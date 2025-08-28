@@ -178,6 +178,8 @@
 }
 
 .query-node {
+	width: fit-content;
+
 	* {
 		font-family: "JetBrains Mono";
 	}
@@ -238,10 +240,13 @@
 
 	input {
 	// div[contenteditable="true"] {
-		width: 125px;
+		width: 100%;
+		max-width: 100%;
 		padding: 5px;
 		margin-block: 5px;
 		margin-right: 8px;
+
+		box-sizing: border;
 
 		background-color: #F6F6F6;
 
@@ -280,7 +285,7 @@
 }
 
 .list-node {
-	width: 155px;
+	min-width: 155px;
 
 	.node-name {
 		padding-bottom: 5px;

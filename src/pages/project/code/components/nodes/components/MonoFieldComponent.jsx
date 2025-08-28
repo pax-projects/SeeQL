@@ -1,4 +1,5 @@
 import HandleWithValidation from "./HandleWithValidation";
+import InputAutosize from "./InputAutosize";
 
 const MonoFieldComponent = ({ defaultValue, placeholder, handleID, onUpdate }) => {
 	const handleInputUpdate = (e) => {
@@ -8,7 +9,7 @@ const MonoFieldComponent = ({ defaultValue, placeholder, handleID, onUpdate }) =
 	return (
 		<div className="flex-row nodrag row">
 			<HandleWithValidation type="target" position="left" id={[handleID, "unique-element-handle"]}/>
-			<input type="text" defaultValue={defaultValue} placeholder={placeholder} onInput={handleInputUpdate}/>
+			<InputAutosize type="text" defaultValue={defaultValue} placeholder={placeholder} onInput={handleInputUpdate} />
 		</div>
 	);
 }
