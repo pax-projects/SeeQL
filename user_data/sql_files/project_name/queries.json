@@ -3,30 +3,165 @@
         "nodes": [
             {
                 "id": "n1",
+                "type": "select",
                 "position": {
-                    "x": 0,
-                    "y": 0
+                    "x": 130,
+                    "y": -20
                 },
                 "data": {
-                    "label": "INSERT"
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "fields": [
+                        {
+                            "id": 0,
+                            "value": "u.id"
+                        },
+                        {
+                            "id": 2,
+                            "value": "u.first_name"
+                        },
+                        {
+                            "id": 3,
+                            "value": "u.last_name"
+                        },
+                        {
+                            "id": 4,
+                            "value": "r.create"
+                        },
+                        {
+                            "id": 5,
+                            "value": ""
+                        }
+                    ]
                 },
                 "measured": {
-                    "width": 65,
-                    "height": 37
-                }
+                    "width": 158,
+                    "height": 260
+                },
+                "selected": false,
+                "dragging": false
             },
             {
                 "id": "n2",
+                "type": "from",
                 "position": {
-                    "x": 72.69831410404817,
-                    "y": 107.18008040533809
+                    "x": 344.1075514874142,
+                    "y": -19.956978846776405
                 },
                 "data": {
-                    "label": "SELECT"
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "field": "users AS u"
                 },
                 "measured": {
-                    "width": 68,
-                    "height": 37
+                    "width": 158,
+                    "height": 75
+                },
+                "selected": false,
+                "dragging": false
+            },
+            {
+                "id": "n3",
+                "type": "join",
+                "position": {
+                    "x": 579.9678983087668,
+                    "y": 4.201206039852675
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "fields": {
+                        "conditions": [
+                            {
+                                "id": 0,
+                                "value": "u.id = r.user_id"
+                            }
+                        ],
+                        "table": "rights AS r",
+                        "joinType": "inner"
+                    }
+                },
+                "measured": {
+                    "width": 158,
+                    "height": 161
+                },
+                "selected": false,
+                "dragging": false
+            },
+            {
+                "id": "n4",
+                "type": "where",
+                "position": {
+                    "x": 807.1088095992164,
+                    "y": -22.103825741597547
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "fields": [
+                        {
+                            "id": 0,
+                            "value": "u.grade = \"admin\""
+                        }
+                    ]
+                },
+                "measured": {
+                    "width": 158,
+                    "height": 95
+                },
+                "selected": false,
+                "dragging": false
+            },
+            {
+                "id": "n5",
+                "type": "list",
+                "position": {
+                    "x": -93.4497621922358,
+                    "y": 118.68268338482537
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "multiple"
+                    },
+                    "fields": [
+                        {
+                            "id": 0,
+                            "value": "created_at"
+                        },
+                        {
+                            "id": 1,
+                            "value": "updated_at"
+                        },
+                        {
+                            "id": 2,
+                            "value": "deleted_at"
+                        },
+                        {
+                            "id": 3,
+                            "value": "created_by"
+                        },
+                        {
+                            "id": 4,
+                            "value": "updated_by"
+                        },
+                        {
+                            "id": 5,
+                            "value": "deleted_by"
+                        }
+                    ],
+                    "isOpenState": true
+                },
+                "measured": {
+                    "width": 158,
+                    "height": 307
                 },
                 "selected": true,
                 "dragging": false
@@ -34,15 +169,72 @@
         ],
         "edges": [
             {
-                "id": "n1-n2",
+                "source": "n5",
+                "sourceHandle": "n5,list-node",
+                "target": "n1",
+                "targetHandle": "n1,select-column-handle-5,listable-element-handle",
+                "markerEnd": {
+                    "type": "arrowclosed"
+                },
+                "style": {},
+                "id": "xy-edge__n5n5,list-node-n1n1,select-column-handle-5,listable-element-handle"
+            },
+            {
                 "source": "n1",
-                "target": "n2"
+                "sourceHandle": "n1,select-handle",
+                "target": "n2",
+                "targetHandle": "n2,from-handle",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n1n1,select-handle-n2n2,from-handle"
+            },
+            {
+                "source": "n2",
+                "sourceHandle": "n2,from-handle",
+                "target": "n3",
+                "targetHandle": "n3,join-handle",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n2n2,from-handle-n3n3,join-handle"
+            },
+            {
+                "source": "n3",
+                "sourceHandle": "n3,join-handle",
+                "target": "n4",
+                "targetHandle": "n4,where-handle",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n3n3,join-handle-n4n4,where-handle"
             }
         ],
         "viewport": {
-            "x": 339.85667392138157,
-            "y": 276,
-            "zoom": 1.9281442985636412
+            "x": 74.5852381482548,
+            "y": 360.5259564353994,
+            "zoom": 0.5
         }
     },
     "hard-delete-user": {

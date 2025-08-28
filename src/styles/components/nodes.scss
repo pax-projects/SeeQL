@@ -1,5 +1,50 @@
 @use "../vars.scss" as *;
 
+// Handles
+.react-flow__handle {
+	width: 8px;
+	height: 8px;
+	margin-top: 10px;
+
+	background: white;
+
+	border: 1.5px solid lightgrey;
+
+	transition: border .2s;
+
+	position: relative;
+
+	&.connected {
+		border-color: $node-blue-border;
+
+		background-color: $node-blue-border-light;
+
+		// &:before {
+		// 	top: 1.5px;
+		// 	left: 1px;
+
+		// 	content: "";
+
+		// 	width: 5.5px;
+		// 	height: 5.5px;
+
+		// 	background-color: $;
+
+		// 	border-radius: 4px;
+
+		// 	display: block;
+		// 	position: relative;
+		// }
+	}
+}
+
+.react-flow__node.selected {
+	.react-flow__handle {
+		border-color: $node-blue-border;
+	}
+}
+// --- Handles ---
+
 .react-flow__node {
 	width: fit-content;
 	height: fit-content;
@@ -14,7 +59,7 @@
 
 	box-shadow: 0 0 5px rgba($node-grey-border, .2);
 
-	overflow: hidden;
+	// overflow: hidden;
 
 	transition: border .2s, box-shadow .2s;
 
@@ -37,11 +82,14 @@
 	.node-name {
 		width: 100%;
 		height: fit-content;
+		padding: 5px 10px;
+		padding-left: 6px;
 
 		box-sizing: border-box;
 
-		padding: 5px 10px;
 		background-color: #F9F9F9;
+		
+		border-radius: 4px;
 
 		h3 {
 			font-size: 17px;
@@ -125,6 +173,133 @@
 					margin-right: -10px;
 				}
 			}
+		}
+	}
+}
+
+.query-node {
+	* {
+		font-family: "JetBrains Mono";
+	}
+
+	h3 {
+		width: 100%;
+
+		color: #BD0000;
+
+		font-weight: bold !important;
+	}
+
+	.node-name {
+		padding-bottom: 0;
+
+		background: transparent;
+
+		position: relative;
+
+		.react-flow__handle[data-handlepos="left"] {
+			min-width: 8px;
+			margin-left: -6px;
+		}
+
+		.react-flow__handle[data-handlepos="right"] {
+			min-width: 8px;
+			margin-right: -10px;
+		}
+	}
+
+	.row {
+		align-items: center;
+		position: relative;
+
+		.bin {
+			top: 9px;
+			right: 12px;
+
+			opacity: 0;
+
+			position: absolute;
+
+			transition: .2s;
+		}
+
+		&:hover {
+			.bin {
+				opacity: 1;
+			}
+		}
+	}
+
+	.rows {
+		button {
+			margin-left: auto;
+		}
+	}
+
+	input {
+	// div[contenteditable="true"] {
+		width: 125px;
+		padding: 5px;
+		margin-block: 5px;
+		margin-right: 8px;
+
+		background-color: #F6F6F6;
+
+		border-radius: 2px;
+
+		font-size: 12px;
+
+		cursor: text;
+	}
+}
+
+.from-node {
+	.node-name {
+		
+	}
+
+	input {
+		margin-bottom: 8px;
+	}
+}
+
+.join-node {
+	.node-name {
+		select {
+			font-size: 10px;
+			border: 1px solid lightgrey;
+			border-radius: 2px;
+		}
+	}
+
+	> div:nth-child(2) {
+		h3 {
+			margin-left: 10px;
+		}
+	}
+}
+
+.list-node {
+	width: 155px;
+
+	.node-name {
+		padding-bottom: 5px;
+
+		h3 {
+			color: $node-blue-border;
+
+			span {
+				color: inherit;
+
+				font-size: 12px;
+
+				line-height: 17px;
+				vertical-align: middle;
+			}
+		}
+
+		img {
+			transform: rotate(90deg);
 		}
 	}
 }

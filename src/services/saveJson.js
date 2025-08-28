@@ -14,8 +14,6 @@ function saveJson(data) {
 	let targetFile;
 	let fileKey;
 
-	console.log(data, data.file);
-
 	// Determine which JSON file to use based on the prefix in data.file
 	if (data.file.startsWith("[Tables]")) {
 		// Store in tables.json and remove the "[Tables]" tag from the key

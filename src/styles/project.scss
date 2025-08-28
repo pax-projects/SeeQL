@@ -140,6 +140,8 @@ $header-height: 101px;
 		min-width: fit-content;
 		width: 15%;
 		height: calc(100vh - $header-height - 1px);
+
+		align-items: center;
 		
 		.hierarchy {
 			width: 90%;

@@ -8,7 +8,19 @@
                 "y": -326.1391135289499
             },
             "data": {
-                "value": 123
+                "name": "table",
+                "columns": [
+                    {
+                        "name": "column_one",
+                        "type": "int",
+                        "constraints": ["pk", "ai", "nn"]
+                    },
+                    {
+                        "name": "column_two",
+                        "type": "float",
+                        "constraints": ["uq", "nn"]
+                    }
+                ]
             },
             "measured": {
                 "width": 174,
@@ -21,14 +33,26 @@
             "id": "n2",
             "type": "table",
             "position": {
-                "x": -448.05928189001133,
-                "y": -279.69077031092206
+                "x": -265.73418451403325,
+                "y": -452.0655559323609
             },
             "data": {
-                "value": 123
+                "name": "table",
+                "columns": [
+                    {
+                        "name": "column_one",
+                        "type": "int",
+                        "constraints": ["pk", "ai", "nn"]
+                    },
+                    {
+                        "name": "column_two",
+                        "type": "float",
+                        "constraints": ["uq", "nn"]
+                    }
+                ]
             },
             "measured": {
-                "width": 174,
+                "width": 285,
                 "height": 95
             },
             "selected": false,
@@ -37,8 +61,8 @@
     ],
     "edges": [],
     "viewport": {
-        "x": 449.4393517636485,
-        "y": 471.88041953090647,
-        "zoom": 0.945052069845511
+        "x": 681.5060578432369,
+        "y": 840.4081451960279,
+        "zoom": 1.5757077720986932
     }
 }

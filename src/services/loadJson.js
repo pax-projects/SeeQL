@@ -35,8 +35,6 @@ function loadJson(data) {
 	// Lecture et parsing
 	const fileContent = JSON.parse(fs.readFileSync(targetFile, "utf-8"));
 
-	console.log("FILE KEY:", fileKey);
-
 	if (fileKey[0] === '') {
 		return { success: true, data: fileContent }; // Table
 	} else {

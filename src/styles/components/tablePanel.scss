@@ -4,7 +4,7 @@
 
 #table-panel {
 	width: calc(100% - 30px);
-	height: 25vh;
+	height: calc(25vh + 17px);
 	padding: 10px;
 	margin: auto;
 
@@ -17,98 +17,84 @@
 	box-shadow: 0 0 5px rgba(0, 0, 0, .1);
 
 	display: block;
+	position: relative;
+	overflow: hidden;
 
 	.thead {
-		padding: 15px;
+		padding-bottom: 15px;
 
-		background-color: #F5F7FC;
+		// background-color: #F5F7FC;
 
-		border-radius: 5px;
+		// border-radius: 5px;
+
+		border-bottom: 1px solid lightgrey;
+
 
 		cursor: default;
 
-		> div {
-			gap: 20px;
+		p {
+			width: 22%;
+			color: grey;
 
-			p {
-				width: 30px;
-				text-align: center;
-			}
+			text-align: center;
 
-			p:not(p:last-child) {
-				&:before {
-					top: 0;
-					left: calc(100% + 10px);
-					content: "";
+			position: relative;
 
-					width: 1px;
-					height: 100%;
+			span {
+				color: grey;
 
-					background: black;
+				span {
+					margin-inline: auto;
 
-					position: absolute;
+					font-family: "JetBrains Mono";
 				}
 
-				position: relative;
+				span:not(:last-child) {
+					position: relative;
+
+					&::before {
+						content: "";
+
+						width: 2px;
+						height: 100%;
+
+						background-color: lightgrey;
+
+						border-radius: 1px;
+
+						transform: translateX(35px);
+
+						display: block;
+						position: absolute;
+					}
+				}
 			}
 		}
 	}
 
 	.tbody {
-		padding: 5px 15px;
+		overflow: hidden;
+		height: 100%;
 
-		* {
-			padding: 0;
-			margin: 0;
+		ul {
+			margin-top: 5px;
 		}
 
-		input {
-			width: calc(90%/4);
+		.row {
+			width: 100%;
+			height: 50px;
 
-			border: none;
-			border-bottom: 2px solid #EFF1F6;
-			border-radius: 0;
-		}
+			// background-color: #F5F7FC;
 
-		.reorder-handle {
-			width: 18px;
-		}
-
-		.row-item {
-			margin-block: 2.5px;
-			padding: 10px;
-
-			background: white;
-
-			border: 2px solid white;
 			border-radius: 5px;
 
-			cursor: pointer;
-		}
-
-		div.checkboxes {
-			margin-right: 10px;
-			gap: 20px;
-
-			input {
-				width: 30px;
+			> * {
+				width: 22%;
 			}
 
-			input:not(input:last-child) {
-				&:before {
-					top: 0;
-					left: calc(100% + 10px);
-					content: "";
-
-					width: .5px;
-					height: 100%;
-
-					background: black;
-
-					position: absolute;
-				}
-
-				position: relative;
+			img {
+				width: 15px;
+				margin-top: 10px;
 			}
 		}
 	}

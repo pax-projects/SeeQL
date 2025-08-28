@@ -2,23 +2,23 @@ import { useState, memo } from "react";
 import { Handle } from "@xyflow/react";
 
 // Exemple de data statique (idéalement tu passes ça en props)
-const data = {
-	name: "table",
-	columns: [
-		{
-			name: "column_one",
-			type: "int",
-			constraints: ["pk", "ai", "nn"],
-		},
-		{
-			name: "column_two",
-			type: "float",
-			constraints: ["uq", "nn"],
-		},
-	],
-};
+// const tempData = {
+// 	name: "table",
+// 	columns: [
+// 		{
+// 			name: "column_one",
+// 			type: "int",
+// 			constraints: ["pk", "ai", "nn"],
+// 		},
+// 		{
+// 			name: "column_two",
+// 			type: "float",
+// 			constraints: ["uq", "nn"],
+// 		},
+// 	],
+// };
 
-const SQLTableNode = ({ nodeData = data }) => {
+const SQLTableNode = ({ data }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toogleOpen = () => setIsOpen(!isOpen);
@@ -26,17 +26,17 @@ const SQLTableNode = ({ nodeData = data }) => {
 	return (
 		<div className="flex-col-between node table-node">
 			<div className="flex-row-between node-name">
-				<h3>{nodeData.name}</h3>
+				<h3>{data.name}</h3>
 				{
 					isOpen
-					? <img src="/src/assets/icons/collapse.svg" alt="collapse" onClick={(e) => {toogleOpen(); e.stopPropagation()}} />
-					: <img src="/src/assets/icons/expand.svg" alt="expand" onClick={(e) => {toogleOpen(); e.stopPropagation()}} />
+					? <img src="/src/assets/icons/collapse.svg" alt="collapse" onClick={(e) => {setIsOpen(!isOpen); e.stopPropagation()}} />
+					: <img src="/src/assets/icons/expand.svg" alt="expand" onClick={(e) => {setIsOpen(!isOpen); e.stopPropagation()}} />
 				}
 			</div>
 			<div className="flex-col columns">
 				<table>
 					<tbody>
-						{nodeData.columns.map((col) => (
+						{data.columns.map((col) => (
 							<tr key={col.name} className="column">
 								<td className="column-name"><span>{col.name}</span></td>
 								<td className="column-type"><span>{col.type}</span></td>

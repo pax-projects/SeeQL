@@ -11,7 +11,7 @@ const Column = ({ col, index, form }) => {
 			value={col}
 			dragListener={false}
 			dragControls={controls}
-			className="flex-row-between row-item"
+			className="flex-row-between row"
 		>
 			<img src="/src/assets/icons/grip-vertical.svg" alt="Drag here" className="reorder-handle" onPointerDown={(e) => { e.preventDefault(); controls.start(e)}} />
 			<input type="text" defaultValue={col.name} {...register(`columns.${index}.name`)} />
