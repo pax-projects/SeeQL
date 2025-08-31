@@ -5,7 +5,8 @@ import HandleWithValidation from "../components/HandleWithValidation";
 import MultiFieldsComponent from "../components/MultiFieldsComponent";
 
 const connectionPoints = [
-	"listable-element-handle"
+	"listable-element-handle",
+	"func-field-handle"
 ]
 
 const ListNode = (props) => {
@@ -32,13 +33,14 @@ const ListNode = (props) => {
 				? <img src="/src/assets/icons/collapse.svg" alt="collapse" onClick={(e) => {toogleOpen(); e.stopPropagation()}} />
 				: <img src="/src/assets/icons/expand.svg" alt="expand" onClick={(e) => {toogleOpen(); e.stopPropagation()}} />
 			}
-			<HandleWithValidation type="source" position="right" id={[props.id, "list-node"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["list-node", "output"]} constraints={connectionPoints}/>
 		</div>
 		{
 			isOpen && <MultiFieldsComponent
 				defaultValues={props.data?.fields}
 				placeholder="element"
-				handleID={[props.id, "where-condition-handle"]}
+				nodeID={props.id}
+				handlesID={"where-condition-handle"}
 				onUpdate={update}
 			/>
 		}

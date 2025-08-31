@@ -5,11 +5,11 @@ import HandleWithValidation from "../components/HandleWithValidation";
 import MultiFieldsComponent from "../components/MultiFieldsComponent";
 
 const connectionPoints = [
-	"group-by-handle",
-	"order-by-handle"
+	"order-by-handle",
+	"limit-handle"
 ]
 
-const WhereNode = (props) => {
+const HavingNode = (props) => {
 	const update = useCallback((fields) => {
 		props.data["handleRules"] = {
 			source: "single",
@@ -19,17 +19,17 @@ const WhereNode = (props) => {
 		props.data["fields"] = fields;
 	}, []);
 
-	return (<div className="where-node query-node node">
+	return (<div className="having-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["where-handle", "input"]}/>
-			<h3>WHERE</h3>
-			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["where-handle", "output"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["having-handle", "input"]}/>
+			<h3>HAVING</h3>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["having-handle", "output"]} constraints={connectionPoints}/>
 		</div>
 		<MultiFieldsComponent
 			defaultValues={props.data?.fields}
 			placeholder="condition"
 			nodeID={props.id}
-			handlesID={"where-condition-handle"}
+			handlesID={"having-condition-handle"}
 			onUpdate={update}
 		/>
 	</div>);
@@ -40,4 +40,4 @@ function areEqual(prevProps, nextProps) {
   return JSON.stringify(prevProps.data) === JSON.stringify(nextProps.data);
 }
 
-export default memo(WhereNode, areEqual);
+export default memo(HavingNode, areEqual);

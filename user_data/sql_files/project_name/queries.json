@@ -5,8 +5,8 @@
                 "id": "n1",
                 "type": "select",
                 "position": {
-                    "x": 92.25225432823586,
-                    "y": -24.04440132197473
+                    "x": 42.252254328235864,
+                    "y": 90.95559867802527
                 },
                 "data": {
                     "handleRules": {
@@ -47,8 +47,8 @@
                 "id": "n2",
                 "type": "from",
                 "position": {
-                    "x": 345.1075514874142,
-                    "y": -23.956978846776405
+                    "x": 305.1075514874142,
+                    "y": 91.04302115322359
                 },
                 "data": {
                     "handleRules": {
@@ -68,8 +68,8 @@
                 "id": "n3",
                 "type": "join",
                 "position": {
-                    "x": 626.3044466244804,
-                    "y": -23.887596604096785
+                    "x": 576.3044466244804,
+                    "y": 91.11240339590321
                 },
                 "data": {
                     "handleRules": {
@@ -84,22 +84,22 @@
                             }
                         ],
                         "table": "rights AS r",
-                        "joinType": "inner"
+                        "joinType": "left"
                     }
                 },
                 "measured": {
                     "width": 207,
                     "height": 161
                 },
-                "selected": true,
+                "selected": false,
                 "dragging": false
             },
             {
                 "id": "n4",
                 "type": "where",
                 "position": {
-                    "x": 912.2632439705594,
-                    "y": -23.25569196760597
+                    "x": 868.2632439705594,
+                    "y": 187.74430803239403
                 },
                 "data": {
                     "handleRules": {
@@ -110,6 +110,36 @@
                         {
                             "id": 0,
                             "value": "u.grade = \"admin\""
+                        },
+                        {
+                            "id": 1,
+                            "value": ""
+                        }
+                    ]
+                },
+                "measured": {
+                    "width": 207,
+                    "height": 136
+                },
+                "selected": false,
+                "dragging": false
+            },
+            {
+                "id": "n6",
+                "type": "groupBy",
+                "position": {
+                    "x": 1159.2632439705594,
+                    "y": 91.74430803239403
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "fields": [
+                        {
+                            "id": 0,
+                            "value": ""
                         }
                     ]
                 },
@@ -121,11 +151,69 @@
                 "dragging": false
             },
             {
+                "id": "n7",
+                "type": "having",
+                "position": {
+                    "x": 1415.2632439705594,
+                    "y": 91.74430803239403
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "fields": [
+                        {
+                            "id": 0,
+                            "value": ""
+                        }
+                    ]
+                },
+                "measured": {
+                    "width": 207,
+                    "height": 95
+                },
+                "selected": false,
+                "dragging": false
+            },
+            {
+                "id": "n8",
+                "type": "orderBy",
+                "position": {
+                    "x": 1665.2632439705594,
+                    "y": 91.74430803239403
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "single",
+                        "target": "multiple"
+                    },
+                    "fields": [
+                        {
+                            "id": 7,
+                            "value": "",
+                            "isAsc": true
+                        },
+                        {
+                            "id": 8,
+                            "value": "",
+                            "isAsc": false
+                        }
+                    ]
+                },
+                "measured": {
+                    "width": 252,
+                    "height": 144
+                },
+                "selected": false,
+                "dragging": false
+            },
+            {
                 "id": "n5",
                 "type": "list",
                 "position": {
-                    "x": -211.62794013027525,
-                    "y": 106.86486559102144
+                    "x": -225.86214074388445,
+                    "y": 362.06391946708413
                 },
                 "data": {
                     "handleRules": {
@@ -165,59 +253,45 @@
                 },
                 "selected": false,
                 "dragging": false
+            },
+            {
+                "id": "n10",
+                "type": "operator",
+                "position": {
+                    "x": 509.2688248768647,
+                    "y": 377.2619647146409
+                },
+                "data": {
+                    "handleRules": {
+                        "source": "multiple"
+                    },
+                    "isOpenState": true
+                },
+                "measured": {
+                    "width": 207,
+                    "height": 145
+                },
+                "selected": false,
+                "dragging": false
             }
         ],
         "edges": [
             {
-                "source": "n5",
-                "sourceHandle": "n5,list-node",
-                "target": "n1",
-                "targetHandle": "n1,select-column-handle-5,listable-element-handle",
+                "source": "n10",
+                "sourceHandle": "operator-function-handle",
+                "target": "n4",
+                "targetHandle": "where-condition-handle-1,listable-element-handle",
                 "markerEnd": {
                     "type": "arrowclosed"
                 },
                 "style": {},
-                "id": "xy-edge__n5n5,list-node-n1n1,select-column-handle-5,listable-element-handle"
-            },
-            {
-                "source": "n1",
-                "sourceHandle": "n1,select-handle",
-                "target": "n2",
-                "targetHandle": "n2,from-handle",
-                "markerEnd": {
-                    "type": "arrowclosed",
-                    "width": 10,
-                    "height": 10,
-                    "color": "#D80202"
-                },
-                "style": {
-                    "strokeWidth": 2,
-                    "stroke": "#D80202"
-                },
-                "id": "xy-edge__n1n1,select-handle-n2n2,from-handle"
-            },
-            {
-                "source": "n2",
-                "sourceHandle": "n2,from-handle",
-                "target": "n3",
-                "targetHandle": "n3,join-handle",
-                "markerEnd": {
-                    "type": "arrowclosed",
-                    "width": 10,
-                    "height": 10,
-                    "color": "#D80202"
-                },
-                "style": {
-                    "strokeWidth": 2,
-                    "stroke": "#D80202"
-                },
-                "id": "xy-edge__n2n2,from-handle-n3n3,join-handle"
+                "id": "xy-edge__n10operator-function-handle-n4where-condition-handle-1,listable-element-handle"
             },
             {
                 "source": "n3",
-                "sourceHandle": "n3,join-handle",
+                "sourceHandle": "join-handle,output",
                 "target": "n4",
-                "targetHandle": "n4,where-handle",
+                "targetHandle": "where-handle,input",
                 "markerEnd": {
                     "type": "arrowclosed",
                     "width": 10,
@@ -228,13 +302,109 @@
                     "strokeWidth": 2,
                     "stroke": "#D80202"
                 },
-                "id": "xy-edge__n3n3,join-handle-n4n4,where-handle"
+                "id": "xy-edge__n3join-handle,output-n4where-handle,input"
+            },
+            {
+                "source": "n4",
+                "sourceHandle": "where-handle,output",
+                "target": "n6",
+                "targetHandle": "group-by-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n4where-handle,output-n6group-by-handle,input"
+            },
+            {
+                "source": "n6",
+                "sourceHandle": "group-by-handle,output",
+                "target": "n7",
+                "targetHandle": "having-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n6group-by-handle,output-n7having-handle,input"
+            },
+            {
+                "source": "n2",
+                "sourceHandle": "from-handle,output",
+                "target": "n3",
+                "targetHandle": "join-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n2from-handle,output-n3join-handle,input"
+            },
+            {
+                "source": "n1",
+                "sourceHandle": "select-handle,output",
+                "target": "n2",
+                "targetHandle": "from-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n1select-handle,output-n2from-handle,input"
+            },
+            {
+                "source": "n5",
+                "sourceHandle": "list-node,output",
+                "target": "n1",
+                "targetHandle": "select-column-handle-5,listable-element-handle",
+                "markerEnd": {
+                    "type": "arrowclosed"
+                },
+                "style": {},
+                "id": "xy-edge__n5list-node,output-n1select-column-handle-5,listable-element-handle"
+            },
+            {
+                "source": "n7",
+                "sourceHandle": "having-handle,output",
+                "target": "n8",
+                "targetHandle": "order-by-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#D80202"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#D80202"
+                },
+                "id": "xy-edge__n7having-handle,output-n8order-by-handle,input"
             }
         ],
         "viewport": {
-            "x": 332.8085285419205,
-            "y": 274.11396907116193,
-            "zoom": 0.784584097896752
+            "x": 152.64972419333117,
+            "y": 243.99512046372263,
+            "zoom": 0.5
         }
     },
     "hard-delete-user": {

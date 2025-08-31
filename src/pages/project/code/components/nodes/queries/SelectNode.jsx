@@ -8,7 +8,6 @@ const connectionPoints = [
 ]
 
 const SelectNode = (props) => {
-	console.log(props)
 	const update = useCallback((fields) => {
 		props.data["handleRules"] = {
 			source: "single",
@@ -20,15 +19,16 @@ const SelectNode = (props) => {
 
 	return (<div className="select-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" id={[props.id, "select-handle"]}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["select-handle", "input"]}/>
 			<h3>SELECT</h3>
-			<HandleWithValidation type="source" position="right" id={[props.id, "select-handle"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["select-handle", "output"]} constraints={connectionPoints}/>
 		</div>
 		<div className="flex-col rows">
 			<MultiFieldsComponent
 				defaultValues={props.data?.fields}
 				placeholder="column_name"
-				handlesID={[props.id, "select-column-handle"]}
+				nodeID={props.id}
+				handlesID={"select-column-handle"}
 				onUpdate={update}
 			/>
 		</div>

@@ -24,9 +24,24 @@ import UpdateNode from "./components/nodes/queries/UpdateNode";
 import DeleteNode from "./components/nodes/queries/DeleteNode";
 import FromNode from "./components/nodes/queries/FromNode";
 import JoinNode from "./components/nodes/queries/JoinNode";
+import GroupByNode from "./components/nodes/queries/GroupByNode";
+import HavingNode from "./components/nodes/queries/HavingNode";
 import WhereNode from "./components/nodes/queries/WhereNode";
-import OrderNode from "./components/nodes/queries/OrderNode";
+import OrderByNode from "./components/nodes/queries/OrderByNode";
 import LimitNode from "./components/nodes/queries/LimitNode";
+
+// Functions
+// - Agregation
+import AvgFunctionNode from "./components/nodes/functions/agregation/AvgFunctionNode";
+import MaxFunctionNode from "./components/nodes/functions/agregation/MaxFunctionNode";
+import MinFunctionNode from "./components/nodes/functions/agregation/MinFunctionNode";
+import SumFunctionNode from "./components/nodes/functions/agregation/SumFunctionNode";
+import CountFunctionNode from "./components/nodes/functions/agregation/CountFunctionNode";
+
+// - Maths
+import LogicalFunctionNode from "./components/nodes/functions/maths/LogicalFunctionNode";
+
+// Others
 import ListNode from "./components/nodes/queries/ListNode";
 
 const nodeTypes = {
@@ -37,9 +52,24 @@ const nodeTypes = {
 	delete: DeleteNode,
 	from: FromNode,
 	join: JoinNode,
+	groupBy: GroupByNode,
+	having: HavingNode,
 	where: WhereNode,
-	order: OrderNode,
+	orderBy: OrderByNode,
 	limit: LimitNode,
+
+	// Functions:
+	// - Agregation
+	avg: AvgFunctionNode,
+	max: MaxFunctionNode,
+	min: MinFunctionNode,
+	sum: SumFunctionNode,
+	count: CountFunctionNode,
+
+	// - Maths
+	operator: LogicalFunctionNode,
+
+	// Others
 	list: ListNode
 };
 
@@ -51,7 +81,9 @@ const primaryNodes = [
 	"from-handle",
 	"join-handle",
 	"where-handle",
-	"order-handle",
+	"group-by-handle",
+	"having-handle",
+	"order-by-handle",
 	"limit-handle"
 ];
 

@@ -6,7 +6,8 @@ import MonoFieldComponent from "../components/MonoFieldComponent";
 
 const connectionPoints = [
 	"where-handle",
-	"join-handle"
+	"join-handle",
+	"group-by-handle"
 ]
 
 const FromNode = (props) => {
@@ -21,14 +22,15 @@ const FromNode = (props) => {
 
 	return (<div className="from-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" id={[props.id, "from-handle"]}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["from-handle", "input"]}/>
 			<h3>FROM</h3>
-			<HandleWithValidation type="source" position="right" id={[props.id, "from-handle"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["from-handle", "output"]} constraints={connectionPoints}/>
 		</div>
 		<MonoFieldComponent
 			defaultValue={props.data?.field}
 			placeholder="table_name"
-			handleID={[props.id, "from-table-name"]}
+			nodeID={props.id}
+			handleID={"from-table-name"}
 			onUpdate={update}
 		/>
 	</div>);

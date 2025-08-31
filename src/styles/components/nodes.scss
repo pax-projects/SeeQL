@@ -177,7 +177,7 @@
 	}
 }
 
-.query-node {
+.query-node, .func-node {
 	width: fit-content;
 
 	* {
@@ -192,6 +192,12 @@
 		font-weight: bold !important;
 	}
 
+	.react-flow__handle {
+		min-width: 8px;
+		width: 8px;
+		max-width: 8px;
+	}
+
 	.node-name {
 		padding-bottom: 0;
 
@@ -200,12 +206,10 @@
 		position: relative;
 
 		.react-flow__handle[data-handlepos="left"] {
-			min-width: 8px;
 			margin-left: -6px;
 		}
 
 		.react-flow__handle[data-handlepos="right"] {
-			min-width: 8px;
 			margin-right: -10px;
 		}
 	}
@@ -233,6 +237,10 @@
 	}
 
 	.rows {
+		> div {
+			align-items: center;
+		}
+
 		button {
 			margin-left: auto;
 		}
@@ -305,6 +313,48 @@
 
 		img {
 			transform: rotate(90deg);
+		}
+	}
+}
+
+.order-by-node {
+	.rows > div {
+		button.ascDesc {
+			width: 45px;
+			height: 45px;
+			margin: auto;
+		}
+	}
+}
+
+.func-node {
+	h3 {
+		width: 100%;
+
+		color: #A700FF;
+
+		font-weight: bold !important;
+	}
+
+	input {
+		margin-bottom: 8px;
+	}
+}
+
+.operator-func-node {
+	.operator-func {
+		width: 100%;
+		
+		select {
+			margin: auto;
+			margin-bottom: 3px;
+
+			font-size: 15px;
+			border: 1px solid lightgrey;
+			color: grey;
+			border-radius: 2px;
+
+			display: block;
 		}
 	}
 }

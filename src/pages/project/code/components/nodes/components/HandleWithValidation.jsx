@@ -1,7 +1,27 @@
-import { useState } from "react";
-import { Handle } from "@xyflow/react";
+import { useState, useEffect } from "react";
+import { Handle, useNodeConnections } from "@xyflow/react";
 
-const HandleWithValidation = ({ position, type, id, constraints }) => {
+const HandleWithValidation = ({ position, type, nodeID, handleID, constraints }) => {
+	const [connNumber, setConnNumber] = useState(false);
+
+	const connections = useNodeConnections({
+		id: nodeID,
+		handleId: String(handleID),
+		type: type,
+
+		onConnect: (params) => {
+
+		},
+
+		onDisconnect: (params) => {
+			
+		},
+	});
+
+	const isHandleConnected = connections.some(
+		(conn) => conn.sourceHandle === String(handleID) || conn.targetHandle === String(handleID)
+	);
+
 	return (
 		<Handle
 			type={type}
@@ -15,10 +35,9 @@ const HandleWithValidation = ({ position, type, id, constraints }) => {
 					}
 				}
 			}}
-			// onConnect={(params) => console.log(true)}
-			id={String(id)}
+			id={String(handleID)}
 
-			// className={isConnected ? "connected" : ""}
+			className={isHandleConnected ? "connected" : ""}
 		/>
 	);
 }

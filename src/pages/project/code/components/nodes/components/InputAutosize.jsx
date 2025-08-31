@@ -9,6 +9,7 @@ const InputAutosize = (props) => {
 		if (!inputRef.current) return;
 
 		inputRef.current.style.minWidth = `${(content.length - 7) * 10}px`;
+		if (content.length <= 7) inputRef.current.style.minWidth = "125px";
 	}, [inputRef, content]);
 
 	return <input
