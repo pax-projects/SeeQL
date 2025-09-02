@@ -16,6 +16,7 @@ const InputAutosize = (props) => {
 		defaultValue={content}
 		ref={inputRef}
 		onChange={(e) => setContent(e.target.value)}
+		spellCheck="false"
 		{...props}
 	/>
 }

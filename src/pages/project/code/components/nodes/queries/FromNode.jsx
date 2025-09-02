@@ -4,11 +4,20 @@ import { useForm } from "react-hook-form";
 import HandleWithValidation from "../components/HandleWithValidation";
 import MonoFieldComponent from "../components/MonoFieldComponent";
 
-const connectionPoints = [
+const backwardConnectionPoints = [
+	"select-handle",
+	"join-handle"
+]
+
+const forwardConnectionPoints = [
+	"select-handle",
 	"where-handle",
 	"join-handle",
-	"group-by-handle"
-]
+	"group-by-handle",
+	"having-handle",
+	"order-by-handle",
+	"limit-handle"
+];
 
 const FromNode = (props) => {
 	const update = useCallback((field) => {
@@ -22,9 +31,9 @@ const FromNode = (props) => {
 
 	return (<div className="from-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["from-handle", "input"]}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["from-handle", "input"]} constraints={backwardConnectionPoints}/>
 			<h3>FROM</h3>
-			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["from-handle", "output"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["from-handle", "output"]} constraints={forwardConnectionPoints}/>
 		</div>
 		<MonoFieldComponent
 			defaultValue={props.data?.field}

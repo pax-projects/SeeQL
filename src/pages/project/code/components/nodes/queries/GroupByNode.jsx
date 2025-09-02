@@ -4,9 +4,17 @@ import { useForm } from "react-hook-form";
 import HandleWithValidation from "../components/HandleWithValidation";
 import MultiFieldsComponent from "../components/MultiFieldsComponent";
 
-const connectionPoints = [
+const backwardConnectionPoints = [
+	"from-handle",
+	"join-handle",
+	"using-handle",
+	"where-handle"
+];
+
+const forwardConnectionPoints = [
 	"having-handle",
-	"order-by-handle"
+	"order-by-handle",
+	"limit-handle"
 ]
 
 const GroupByNode = (props) => {
@@ -21,9 +29,9 @@ const GroupByNode = (props) => {
 
 	return (<div className="group-by-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["group-by-handle", "input"]}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["group-by-handle", "input"]} constraints={backwardConnectionPoints}/>
 			<h3>GROUP BY</h3>
-			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["group-by-handle", "output"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["group-by-handle", "output"]} constraints={forwardConnectionPoints}/>
 		</div>
 		<MultiFieldsComponent
 			defaultValues={props.data?.fields}

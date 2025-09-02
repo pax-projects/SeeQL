@@ -29,8 +29,15 @@ const HandleWithValidation = ({ position, type, nodeID, handleID, constraints })
 			isValidConnection={(connection) => {
 				if (constraints === undefined) return true;
 
+				console.log(connection)
+
 				for (const constraint of constraints) {
+					// Forward connections
 					for (const targetID of connection.targetHandle.split(',')) {
+						if (targetID.includes(constraint)) return true;
+					}
+
+					for (const targetID of connection.sourceHandle.split(',')) {
 						if (targetID.includes(constraint)) return true;
 					}
 				}

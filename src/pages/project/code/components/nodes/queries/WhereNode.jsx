@@ -4,10 +4,18 @@ import { useForm } from "react-hook-form";
 import HandleWithValidation from "../components/HandleWithValidation";
 import MultiFieldsComponent from "../components/MultiFieldsComponent";
 
-const connectionPoints = [
+const backwardConnectionPoints = [
+	"from-handle",
+	"join-handle",
+	"using-handle"
+];
+
+const forwardConnectionPoints = [
 	"group-by-handle",
-	"order-by-handle"
-]
+	"having-handle",
+	"order-by-handle",
+	"limit-handle"
+];
 
 const WhereNode = (props) => {
 	const update = useCallback((fields) => {
@@ -21,9 +29,9 @@ const WhereNode = (props) => {
 
 	return (<div className="where-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["where-handle", "input"]}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["where-handle", "input"]} constraints={backwardConnectionPoints}/>
 			<h3>WHERE</h3>
-			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["where-handle", "output"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["where-handle", "output"]} constraints={forwardConnectionPoints}/>
 		</div>
 		<MultiFieldsComponent
 			defaultValues={props.data?.fields}

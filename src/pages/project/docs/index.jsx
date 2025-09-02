@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import ReactMarkdown  from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-
 
 const Docs = () => {
 	const [isEditing, setIsEditing] = useState(false);
@@ -25,6 +25,7 @@ const Docs = () => {
 				!isEditing 
 				? <div className="react-markdown">
 					<ReactMarkdown
+						remarkPlugins={[remarkBreaks]}
 						components={{
 							code({ node, inline, className, children, ...props }) {
 								const match = /language-(\w+)/.exec(className || "");
@@ -42,13 +43,15 @@ const Docs = () => {
 										{children}
 									</code>
 								);
+							},
+							br({ node, ...props }) {
+								return <br {...props} />;
 							}
 						}}
-						>
-							{getValues("documentation")}
-						</ReactMarkdown>
-
-						<button onClick={() => setIsEditing(true)}>Edit docs</button>
+					>
+						{getValues("documentation")}
+					</ReactMarkdown>
+					<button onClick={() => setIsEditing(true)}>Edit docs</button>
 				</div>
 				: <form onSubmit={handleSubmit(onSubmit)} className="flex-col">
 					<textarea

@@ -6,8 +6,19 @@ import HandleWithValidation from "../components/HandleWithValidation";
 import MonoFieldComponent from "../components/MonoFieldComponent";
 import MultiFieldsComponent from "../components/MultiFieldsComponent";
 
-const connectionPoints = [
-	"where-handle"
+const backwardConnectionPoints = [
+	"from-handle",
+	"join-handle"
+]
+
+const forwardConnectionPoints = [
+	"using-handle", // Maybe JOIN + USING
+	"join-handle",
+	"where-handle",
+	"group-by-handle",
+	"having-handle",
+	"order-by-handle",
+	"limit-handle",
 ]
 
 const JoinNode = (props) => {
@@ -47,7 +58,7 @@ const JoinNode = (props) => {
 
 	return (<div className="join-node query-node node">
 		<div className="flex-row-between node-name">
-			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["join-handle", "input"]}/>
+			<HandleWithValidation type="target" position="left" nodeID={props.id} handleID={["join-handle", "input"]} constraints={backwardConnectionPoints}/>
 			<h3>JOIN</h3>
 			<select
 				name="join-type"
@@ -60,7 +71,7 @@ const JoinNode = (props) => {
 				<option value="right">Right</option>
 				<option value="full">Full</option>
 			</select>
-			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["join-handle", "output"]} constraints={connectionPoints}/>
+			<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={["join-handle", "output"]} constraints={forwardConnectionPoints}/>
 		</div>
 		<div className="flex-col">
 			<MonoFieldComponent

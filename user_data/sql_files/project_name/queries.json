@@ -288,6 +288,51 @@
                 "id": "xy-edge__n10operator-function-handle-n4where-condition-handle-1,listable-element-handle"
             },
             {
+                "source": "n5",
+                "sourceHandle": "list-node,output",
+                "target": "n1",
+                "targetHandle": "select-column-handle-5,listable-element-handle",
+                "markerEnd": {
+                    "type": "arrowclosed"
+                },
+                "style": {},
+                "id": "xy-edge__n5list-node,output-n1select-column-handle-5,listable-element-handle"
+            },
+            {
+                "source": "n1",
+                "sourceHandle": "select-handle,output",
+                "target": "n2",
+                "targetHandle": "from-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#4000CD"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#4000CD"
+                },
+                "id": "xy-edge__n1select-handle,output-n2from-handle,input"
+            },
+            {
+                "source": "n2",
+                "sourceHandle": "from-handle,output",
+                "target": "n3",
+                "targetHandle": "join-handle,input",
+                "markerEnd": {
+                    "type": "arrowclosed",
+                    "width": 10,
+                    "height": 10,
+                    "color": "#4000CD"
+                },
+                "style": {
+                    "strokeWidth": 2,
+                    "stroke": "#4000CD"
+                },
+                "id": "xy-edge__n2from-handle,output-n3join-handle,input"
+            },
+            {
                 "source": "n3",
                 "sourceHandle": "join-handle,output",
                 "target": "n4",
@@ -296,11 +341,11 @@
                     "type": "arrowclosed",
                     "width": 10,
                     "height": 10,
-                    "color": "#D80202"
+                    "color": "#4000CD"
                 },
                 "style": {
                     "strokeWidth": 2,
-                    "stroke": "#D80202"
+                    "stroke": "#4000CD"
                 },
                 "id": "xy-edge__n3join-handle,output-n4where-handle,input"
             },
@@ -313,11 +358,11 @@
                     "type": "arrowclosed",
                     "width": 10,
                     "height": 10,
-                    "color": "#D80202"
+                    "color": "#4000CD"
                 },
                 "style": {
                     "strokeWidth": 2,
-                    "stroke": "#D80202"
+                    "stroke": "#4000CD"
                 },
                 "id": "xy-edge__n4where-handle,output-n6group-by-handle,input"
             },
@@ -330,58 +375,13 @@
                     "type": "arrowclosed",
                     "width": 10,
                     "height": 10,
-                    "color": "#D80202"
+                    "color": "#4000CD"
                 },
                 "style": {
                     "strokeWidth": 2,
-                    "stroke": "#D80202"
+                    "stroke": "#4000CD"
                 },
                 "id": "xy-edge__n6group-by-handle,output-n7having-handle,input"
-            },
-            {
-                "source": "n2",
-                "sourceHandle": "from-handle,output",
-                "target": "n3",
-                "targetHandle": "join-handle,input",
-                "markerEnd": {
-                    "type": "arrowclosed",
-                    "width": 10,
-                    "height": 10,
-                    "color": "#D80202"
-                },
-                "style": {
-                    "strokeWidth": 2,
-                    "stroke": "#D80202"
-                },
-                "id": "xy-edge__n2from-handle,output-n3join-handle,input"
-            },
-            {
-                "source": "n1",
-                "sourceHandle": "select-handle,output",
-                "target": "n2",
-                "targetHandle": "from-handle,input",
-                "markerEnd": {
-                    "type": "arrowclosed",
-                    "width": 10,
-                    "height": 10,
-                    "color": "#D80202"
-                },
-                "style": {
-                    "strokeWidth": 2,
-                    "stroke": "#D80202"
-                },
-                "id": "xy-edge__n1select-handle,output-n2from-handle,input"
-            },
-            {
-                "source": "n5",
-                "sourceHandle": "list-node,output",
-                "target": "n1",
-                "targetHandle": "select-column-handle-5,listable-element-handle",
-                "markerEnd": {
-                    "type": "arrowclosed"
-                },
-                "style": {},
-                "id": "xy-edge__n5list-node,output-n1select-column-handle-5,listable-element-handle"
             },
             {
                 "source": "n7",
@@ -392,19 +392,19 @@
                     "type": "arrowclosed",
                     "width": 10,
                     "height": 10,
-                    "color": "#D80202"
+                    "color": "#4000CD"
                 },
                 "style": {
                     "strokeWidth": 2,
-                    "stroke": "#D80202"
+                    "stroke": "#4000CD"
                 },
                 "id": "xy-edge__n7having-handle,output-n8order-by-handle,input"
             }
         ],
         "viewport": {
-            "x": 152.64972419333117,
-            "y": 243.99512046372263,
-            "zoom": 0.5
+            "x": 167.5256487830194,
+            "y": 385.12004403276063,
+            "zoom": 0.5006936278556673
         }
     },
     "hard-delete-user": {

@@ -131,7 +131,7 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 					...params.style
 				}
 			};
-
+			// D80202
 			primaryNodes.forEach(primaryNode => {
 				if (params.sourceHandle.includes(primaryNode)) {
 					params = {
@@ -141,12 +141,12 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 							type: MarkerType.ArrowClosed,
 							width: 10,
 							height: 10,
-							color: '#D80202'
+							color: '#4000CD'
 						},
 						style: {
 							...params.style,
 							strokeWidth: 2,
-							stroke: '#D80202'
+							stroke: '#4000CD'
 						}
 					};
 				}
