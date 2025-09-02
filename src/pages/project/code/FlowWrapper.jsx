@@ -165,6 +165,7 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 	const onSave = useCallback(async () => {
 		await window.electronAPI.saveJson({
 			project_name: "project_name",
+			type: "code",
 			file: file,
 			data: toObject()
 		});

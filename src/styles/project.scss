@@ -198,7 +198,7 @@ $header-height: 101px;
 		}
 
 		> div {
-			padding-right: 30px;
+			padding-right: 40px;
 			height: calc(100vh - $header-height - 66px - 20px);
 
 			overflow: auto;
@@ -224,6 +224,9 @@ $header-height: 101px;
 					margin-bottom: 20px;
 
 					dt {
+						min-width: 350px;
+						width: 350px;
+						max-width: 350px;
 						color: grey;
 
 						font-weight: 300;
@@ -233,27 +236,33 @@ $header-height: 101px;
 				}
 
 				input {
-					top: 50%;
-					left: 500px;
 					width: 300px;
 					height: 30px;
+					margin: 0;
+					margin-left: 50px;
 
-					transform: translateY(-110%);
+					transform: translateY(50%);
 
-					font-style: "JetBrains Mono";
-
-					position: absolute;
+					font-family: "JetBrains Mono";
 				}
 
 				select {
-					top: 50%;
-					left: 500px;
+					min-width: 300px;
+					height: 30px;
+					padding: 5px 10px;
+					margin: 0;
+					margin-left: 50px;
 
-					transform: translateY(-110%);
+					box-sizing: content-box;
 
-					font-style: "JetBrains Mono";
+					border-radius: 5px;
+					border: 1px solid lightgrey;
 
-					position: absolute;
+					transform: translateY(50%);
+
+					font-family: "JetBrains Mono";
+
+					cursor: select;
 				}
 			}
 		}		

@@ -31,6 +31,7 @@ const CodePage = () => {
 		(async () => {
 			const result = await window.electronAPI.loadJson({
 				project_name: "project_name",
+				type: "code",
 				file: file
 			});
 

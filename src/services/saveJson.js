@@ -2,15 +2,15 @@ import fs from "fs";
 import path from "path";
 import { app } from "electron";
 
-function saveJson(data) {
-	// Base directory where all JSON files for this project will be stored
-	// Example: <appPath>/user_data/sql_files/<project_name>
-	let baseDir = path.join(app.getAppPath(), "user_data", "sql_files", data.project_name);
+function getBaseDir(segments) {
+	return path.join(app.getAppPath(), "user_data", ...segments);
+}
 
-	// Ensure the directory exists (creates it recursively if needed)
-	fs.mkdirSync(baseDir, { recursive: true });
+function ensureDir(dir) {
+	fs.mkdirSync(dir, { recursive: true });
+}
 
-	// Variables to store the final file path and the JSON key name
+function handleCodeStorage(data, baseDir) {
 	let targetFile;
 	let fileKey;
 
@@ -44,13 +44,41 @@ function saveJson(data) {
 	} else {
 		newData = { ...fileContent, [fileKey[0]]: data.data };
 	}
-	
 
-	// Write the merged data back to the file (pretty-printed with 2 spaces)
-	fs.writeFileSync(targetFile, JSON.stringify(newData, null, 4), "utf-8");
+	return [targetFile, newData]
+}
 
-	// Return the final path for reference
-	return { success: true, path: targetFile };
+function handleSettingsStorage(data, baseDir) {
+	const targetFile = path.join(baseDir, "settings.json");
+
+	return [targetFile, data.data];
+}
+
+function saveJson(data) {
+	// TODO: Add sql_files folder if it's code
+	if (data.type === "code") {
+		const baseDir = getBaseDir([data.project_name, "sql_files"]); // Base directory where all JSON files for this project will be stored
+		ensureDir(baseDir); // Ensure the directory exists (creates it recursively if needed)
+		
+		const [targetFile, newData] = handleCodeStorage(data, baseDir);
+
+		// Write the merged data back to the file (pretty-printed with 2 spaces)
+		fs.writeFileSync(targetFile, JSON.stringify(newData, null, 4), "utf-8");
+
+		// Return the final path for reference
+		return { success: true, path: targetFile };
+	}
+
+	if (data.type === "settings") {
+		const baseDir = getBaseDir([data.project_name]);
+		ensureDir(baseDir);
+
+		const [targetFile, newData] = handleSettingsStorage(data, baseDir);
+
+		fs.writeFileSync(targetFile, JSON.stringify(newData, null, 4), "utf-8");
+
+		return { success: true, path: targetFile };
+	}
 }
 
 export { saveJson };

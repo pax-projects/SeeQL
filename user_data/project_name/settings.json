@@ -1,0 +1,10 @@
+{
+    "database": "my_sql",
+    "host": "localhost",
+    "port": "",
+    "name": "",
+    "username": "",
+    "password": "",
+    "ssl_tls": "",
+    "auth_method": ""
+}

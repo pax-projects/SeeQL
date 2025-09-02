@@ -2,9 +2,15 @@ import fs from "fs";
 import path from "path";
 import { app } from "electron";
 
-function loadJson(data) {
-	const baseDir = path.join(app.getAppPath(), "user_data", "sql_files", data.project_name);
+function getBaseDir(segments) {
+	return path.join(app.getAppPath(), "user_data", ...segments);
+}
 
+function ensureDir(dir) {
+	fs.mkdirSync(dir, { recursive: true });
+}
+
+function resolveFileAndKey(data, baseDir) {
 	let targetFile;
 	let fileKey;
 
@@ -19,11 +25,13 @@ function loadJson(data) {
 		fileKey = data.file;
 	}
 
-	// Nettoyage et découpage
 	fileKey = fileKey.replace(/^\[|\]$/g, "");
-	fileKey = fileKey.split("][");
+	return [targetFile, fileKey.split("][")];
+}
 
-	// Si le fichier n’existe pas ou est vide → on retourne vide
+function loadUserJSONCode(data, baseDir) {
+	const [targetFile, fileKey] = resolveFileAndKey(data, baseDir);
+
 	if (!fs.existsSync(targetFile)) {
 		return { success: false, data: null };
 	}
@@ -32,13 +40,44 @@ function loadJson(data) {
 		return { success: true, data: null };
 	}
 
-	// Lecture et parsing
 	const fileContent = JSON.parse(fs.readFileSync(targetFile, "utf-8"));
 
 	if (fileKey[0] === '') {
-		return { success: true, data: fileContent }; // Table
+		return { success: true, data: fileContent }; // Entire file
 	} else {
-		return { success: true, data: fileContent[fileKey[0]] }; // Query
+		return { success: true, data: fileContent[fileKey[0]] }; // Specific section
+	}
+}
+
+function loadUserJSONSettings(data, baseDir) {
+	const targetFile = path.join(baseDir, "settings.json");
+	
+	if (!fs.existsSync(targetFile)) {
+		return { success: false, data: null };
+	}
+
+	if (fs.statSync(targetFile).size === 0) {
+		return { success: true, data: null };
+	}
+
+	const fileContent = JSON.parse(fs.readFileSync(targetFile, "utf-8"));
+
+	return { success: true, data: fileContent };
+}
+
+function loadJson(data) {
+	if (data.type == "code") {
+		const baseDir = getBaseDir([data.project_name, "sql_files"]);
+		ensureDir(baseDir);
+
+		return loadUserJSONCode(data, baseDir);
+	}
+
+	if (data.type == "settings") {
+		const baseDir = getBaseDir([data.project_name]);
+		ensureDir(baseDir);
+
+		return loadUserJSONSettings(data, baseDir);
 	}
 }
 

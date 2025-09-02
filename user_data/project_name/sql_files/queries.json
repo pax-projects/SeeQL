@@ -411,9 +411,18 @@
         "nodes": [],
         "edges": [],
         "viewport": {
-            "x": 339.85667392138157,
-            "y": 276,
-            "zoom": 1.9281442985636412
+            "x": 0,
+            "y": 0,
+            "zoom": 1
+        }
+    },
+    "soft-delete-user": {
+        "nodes": [],
+        "edges": [],
+        "viewport": {
+            "x": 0,
+            "y": 0,
+            "zoom": 1
         }
     }
 }
