@@ -83,4 +83,36 @@
 span.red {
 	color: red !important;
 }
+
+span.text-purple {
+	color: $text-violet;
+}
 /* --- Inputs --- */
+
+button.hidden {
+	background: transparent;
+	border: none;
+}
+
+button.icon {
+	width: 32px;
+	height: 32px;
+
+	border-radius: 7px;
+
+	transition: .2s;
+
+	&:hover {
+		background: #F3F3F3;
+	}
+
+	&:active {
+		background: #E4E4E4;
+	}
+
+	img {
+		margin: auto;
+
+		display: block;
+	}
+}

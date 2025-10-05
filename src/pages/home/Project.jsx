@@ -1,57 +1,30 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { ReactFlowProvider, ReactFlow, useReactFlow } from "@xyflow/react";
-
-const initialNodes = [
-	{ id: "n1", position: { x: 0, y: 0 }, data: { label: "Node 1" } },
-	{ id: "n2", position: { x: 0, y: 100 }, data: { label: "Node 2" } },
-];
-
-const initialEdges = [{ id: "n1-n2", source: "n1", target: "n2" }];
-
-function FlowContent() {
-	const [nodes] = useState(initialNodes);
-	const [edges] = useState(initialEdges);
-
-	const { fitView } = useReactFlow();
-
-	useEffect(() => {
-		fitView({ padding: 0.2 });
-	}, [fitView]);
-
-	return (
-		<ReactFlow
-			nodes={nodes}
-			edges={edges}
-			nodesDraggable={false}
-			nodesConnectable={false}
-			elementsSelectable={false}
-			panOnDrag={false}
-			panOnScroll={false}
-			zoomOnScroll={false}
-			zoomOnPinch={false}
-			style={{ background: "#FDFDFD" }}
-		/>
-	);
-}
 
 const Project = ({ isRecent }) => {
 	const navigate = useNavigate();
 
+	const [projects, setProjects] = useState([
+		{}, {}, {}
+	]);
+
 	return (
-		<div
-			className={"flex-col-between project" + (isRecent ? " big" : "")}
-			onClick={() => navigate("/project/0/overview")}
-			style={{ cursor: "pointer" }}
-		>
-			<div className="map" style={{ height: 300, width: "100%" }}>
-				<ReactFlowProvider>
-					<FlowContent />
-				</ReactFlowProvider>
-			</div>
-			<div className="banner">
-				<p>Project name</p>
-			</div>
+		<div id="project">
+			{
+				projects.map(project =>
+					<motion.div className="flex-row-between project" onClick={() => navigate('/project/0/code')}>
+						<div className="flex-col">
+							<h3 className="project__name">Project name</h3>
+							<p className="project__description">Excepteur occaecat cillum deserunt labore fugiat consectetur.</p>
+						</div>
+						<button className="hidden icon" onClick={() => {}}>
+							<img src="/src/assets/icons/dots.svg" alt="options"/>
+						</button>
+					</motion.div>
+				)
+			}
 		</div>
 	);
 };

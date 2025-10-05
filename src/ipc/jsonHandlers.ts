@@ -2,7 +2,12 @@ import { ipcMain } from "electron";
 import { saveJson } from "../services/saveJson.js";
 import { loadJson } from "../services/loadJson.js";
 
-function registerJsonHandlers() {
+interface Response {
+    success: boolean,
+    error: string
+}
+
+const registerJsonHandlers = (): Response => {
     ipcMain.handle("save-json", async (event, data) => {
         try {
             return saveJson(data);
@@ -19,6 +24,10 @@ function registerJsonHandlers() {
             console.error(e);
             return { success: false, error: e };
         }
+    });
+
+    ipcMain.handle("exec-query", async (event, data) => {
+        
     });
 }
 

@@ -2,7 +2,7 @@ import { app, BrowserWindow, dialog } from 'electron';
 
 import path from 'node:path';
 
-import { registerJsonHandlers } from "./ipc/jsonHandlers.js";
+import { registerJsonHandlers } from "./ipc/jsonHandlers.ts";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {

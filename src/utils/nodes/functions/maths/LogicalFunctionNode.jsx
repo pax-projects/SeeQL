@@ -34,6 +34,7 @@ const LogicalFunctionNode = (props) => {
 		<div className="node-name">
 			<div className="flex-row-between">
 				<h3>Logic operator ({operator.description})</h3>
+				{/* WARNING/ Check if output can be used in handleID */}
 				<HandleWithValidation type="source" position="right" nodeID={props.id} handleID={"operator-function-handle"} constraints={connectionPoints}/>
 			</div>
 		</div>

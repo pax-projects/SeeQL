@@ -54,6 +54,12 @@ function handleSettingsStorage(data, baseDir) {
 	return [targetFile, data.data];
 }
 
+function handleTestStorage(data, baseDir) {
+	const targetFile = path.join(baseDir, "queries-test.json");
+
+	return [targetFile, data.data];
+}
+
 function saveJson(data) {
 	// TODO: Add sql_files folder if it's code
 	if (data.type === "code") {
@@ -66,6 +72,17 @@ function saveJson(data) {
 		fs.writeFileSync(targetFile, JSON.stringify(newData, null, 4), "utf-8");
 
 		// Return the final path for reference
+		return { success: true, path: targetFile };
+	}
+
+	if (data.type === "test") {
+		const baseDir = getBaseDir([data.project_name, "sql_files"]);
+		ensureDir(baseDir);
+
+		const [targetFile, newData] = handleTestStorage(data, baseDir);
+
+		fs.writeFileSync(targetFile, JSON.stringify(newData, null, 4), "utf-8");
+
 		return { success: true, path: targetFile };
 	}
 

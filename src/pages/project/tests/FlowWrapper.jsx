@@ -14,85 +14,19 @@ import {
 	useReactFlow
 } from '@xyflow/react';
 
-import TablePanel from './components/TablePanel.jsx';
-
 // SQL Nodes
-import SQLTableNode from "/src/utils/nodes/tables/SQLTableNode";
-import InsertNode from "/src/utils/nodes/queries/InsertNode";
-import SelectNode from "/src/utils/nodes/queries/SelectNode";
-import UpdateNode from "/src/utils/nodes/queries/UpdateNode";
-import DeleteNode from "/src/utils/nodes/queries/DeleteNode";
-import FromNode from "/src/utils/nodes/queries/FromNode";
-import JoinNode from "/src/utils/nodes/queries/JoinNode";
-import GroupByNode from "/src/utils/nodes/queries/GroupByNode";
-import HavingNode from "/src/utils/nodes/queries/HavingNode";
-import WhereNode from "/src/utils/nodes/queries/WhereNode";
-import OrderByNode from "/src/utils/nodes/queries/OrderByNode";
-import LimitNode from "/src/utils/nodes/queries/LimitNode";
-
-// Functions
-// - Agregation
-import AvgFunctionNode from "/src/utils/nodes/functions/agregation/AvgFunctionNode";
-import MaxFunctionNode from "/src/utils/nodes/functions/agregation/MaxFunctionNode";
-import MinFunctionNode from "/src/utils/nodes/functions/agregation/MinFunctionNode";
-import SumFunctionNode from "/src/utils/nodes/functions/agregation/SumFunctionNode";
-import CountFunctionNode from "/src/utils/nodes/functions/agregation/CountFunctionNode";
-
-// - Maths
-import LogicalFunctionNode from "/src/utils/nodes/functions/maths/LogicalFunctionNode";
-
-// Others
-import ListNode from "/src/utils/nodes/queries/ListNode";
-
-import { queryGraphToCode } from "C:/Users/Maxence/Desktop/travail/apps/SeeQL/src/compiler/index.ts";
+import TestNode from "/src/utils/nodes/test/TestNode";
 
 const nodeTypes = {
-	table: SQLTableNode,
-	insert: InsertNode,
-	select: SelectNode,
-	update: UpdateNode,
-	delete: DeleteNode,
-	from: FromNode,
-	join: JoinNode,
-	groupBy: GroupByNode,
-	having: HavingNode,
-	where: WhereNode,
-	orderBy: OrderByNode,
-	limit: LimitNode,
-
-	// Functions:
-	// - Agregation
-	avg: AvgFunctionNode,
-	max: MaxFunctionNode,
-	min: MinFunctionNode,
-	sum: SumFunctionNode,
-	count: CountFunctionNode,
-
-	// - Maths
-	operator: LogicalFunctionNode,
-
-	// Others
-	list: ListNode
+	test: TestNode
 };
 
 const primaryNodes = [
-	"insert-handle",
-	"select-handle",
-	"update-handle",
-	"delete-handle",
-	"from-handle",
-	"join-handle",
-	"where-handle",
-	"group-by-handle",
-	"having-handle",
-	"order-by-handle",
-	"limit-handle"
+	
 ];
 
-const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesChange, file }) => {
+const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesChange }) => {
 	const { fitView, toObject } = useReactFlow();
-
-	useEffect(() => console.log(queryGraphToCode(toObject())), [nodes]);
 
 	const edgeReconnectSuccessful = useRef(true);
 
@@ -125,17 +59,6 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 				newEdges = newEdges.filter(edge => edge.sourceHandle !== params.sourceHandle);
 			}
 
-			params = {
-				...params,
-				markerEnd: {
-					...params.markerEnd,
-					type: MarkerType.ArrowClosed,
-				},
-				style: {
-					...params.style
-				}
-			};
-			// D80202
 			primaryNodes.forEach(primaryNode => {
 				if (params.sourceHandle.includes(primaryNode)) {
 					params = {
@@ -169,11 +92,10 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 	const onSave = useCallback(async () => {
 		await window.electronAPI.saveJson({
 			project_name: "project_name",
-			type: "code",
-			file: file,
+			type: "test",
 			data: toObject()
 		});
-	}, [file, toObject]);
+	}, [toObject]);
 
 	// Correctly reset viewport after nodes are applied
 	useEffect(() => {
@@ -186,7 +108,40 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 
 		return () => clearTimeout(id);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [file]); // triggers only when file changes
+	}, []);
+
+	const play = (e) => {
+	// 	// TODO: Add a save
+	// 	setState(states.RUNNING);
+
+	// 	const result = await window.electronAPI.queryExec({
+	// 		project_name: "project_name",
+	// 		type: "code",
+	// 		queries: toObject()
+	// 	});
+
+	// 	if (result.success && result.data) {
+	// 		setNodes(result.data.nodes || []);
+	// 		setEdges(result.data.edges || []);
+	// 	} else {
+	// 		setNodes([]);
+	// 		setEdges([]);
+	// 	}
+
+	// 	setHasRun()
+	};
+
+	const playWithNext = (e) => {
+		setState(states.RUNNING);
+	};
+
+	const stopPlaying = (e) => {
+		setState(states.NONE);
+	};
+
+	const playAgain = (e) => {
+		setState(states.RUNNING);
+	};
 
 	return (
 		<ReactFlow
@@ -206,12 +161,6 @@ const FlowWrapper = ({ nodes, edges, setNodes, setEdges, onNodesChange, onEdgesC
 				<button onClick={() => fitView()}>restore</button>
 				<button onClick={onSave}>save</button>
 			</Panel>
-
-			{file?.includes("[Tables]") && (
-				<Panel position="bottom-center">
-					<TablePanel onSubmit={onTablePanelSubmit} />
-				</Panel>
-			)}
 		</ReactFlow>
 	);
 };

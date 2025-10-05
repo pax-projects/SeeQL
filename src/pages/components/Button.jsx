@@ -10,4 +10,4 @@ const Button = ({to, content}) => {
 	);
 }
 
-export default Button;
+export { Button };

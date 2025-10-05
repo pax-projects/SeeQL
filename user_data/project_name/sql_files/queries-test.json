@@ -1,0 +1,79 @@
+{
+    "nodes": [
+        {
+            "id": "n1",
+            "type": "test",
+            "position": {
+                "x": -185.38318808817735,
+                "y": -6.101721317437978
+            },
+            "data": {
+                "handleRules": {
+                    "source": "single",
+                    "target": "multiple"
+                },
+                "fields": [
+                    {
+                        "id": 0,
+                        "value": "u.id"
+                    },
+                    {
+                        "id": 2,
+                        "value": "u.first_name"
+                    },
+                    {
+                        "id": 3,
+                        "value": "u.last_name"
+                    },
+                    {
+                        "id": 4,
+                        "value": "r.create"
+                    },
+                    {
+                        "id": 5,
+                        "value": ""
+                    }
+                ]
+            },
+            "measured": {
+                "width": 351,
+                "height": 306
+            },
+            "selected": false,
+            "dragging": false
+        },
+        {
+            "id": "n2",
+            "type": "test",
+            "position": {
+                "x": 275.17874502626705,
+                "y": 73.43784088196057
+            },
+            "data": {
+                "handleRules": {
+                    "source": "single",
+                    "target": "multiple"
+                },
+                "field": "users as u"
+            },
+            "measured": {
+                "width": 351,
+                "height": 306
+            },
+            "selected": false,
+            "dragging": false
+        }
+    ],
+    "edges": [
+        {
+            "source": "n1",
+            "target": "n2",
+            "id": "xy-edge__n1-n2"
+        }
+    ],
+    "viewport": {
+        "x": 738.8298698328779,
+        "y": 184.28009019468243,
+        "zoom": 0.568014632393343
+    }
+}

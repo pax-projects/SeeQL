@@ -65,12 +65,35 @@ function loadUserJSONSettings(data, baseDir) {
 	return { success: true, data: fileContent };
 }
 
+function loadUserJSONTest(data, baseDir) {
+	const targetFile = path.join(baseDir, "queries-test.json");
+	
+	if (!fs.existsSync(targetFile)) {
+		return { success: false, data: null };
+	}
+
+	if (fs.statSync(targetFile).size === 0) {
+		return { success: true, data: null };
+	}
+
+	const fileContent = JSON.parse(fs.readFileSync(targetFile, "utf-8"));
+
+	return { success: true, data: fileContent };
+}
+
 function loadJson(data) {
 	if (data.type == "code") {
 		const baseDir = getBaseDir([data.project_name, "sql_files"]);
 		ensureDir(baseDir);
 
 		return loadUserJSONCode(data, baseDir);
+	}
+
+	if (data.type == "test") {
+		const baseDir = getBaseDir([data.project_name, "sql_files"]);
+		ensureDir(baseDir);
+
+		return loadUserJSONTest(data, baseDir);
 	}
 
 	if (data.type == "settings") {

@@ -154,7 +154,7 @@ $header-height: 101px;
 		border-right: 1px solid lightgrey;
 	}
 
-	div#code_section {
+	div#code_section, div#test_section {
 		width: 100%;
 		height: calc(100vh - $header-height - 1px);
 	}

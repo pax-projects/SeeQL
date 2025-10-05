@@ -177,7 +177,7 @@
 	}
 }
 
-.query-node, .func-node {
+.query-node, .func-node, .test-node {
 	width: fit-content;
 
 	* {
@@ -356,6 +356,70 @@
 			border-radius: 2px;
 
 			display: block;
+		}
+	}
+}
+
+.test-node {
+	.node-color {
+		width: 100%;
+		height: 5px;
+
+		border-top-left-radius: 3.5px;
+		border-top-right-radius: 3.5px;
+	}
+
+	.node-name {
+		padding-bottom: 5px;
+
+		> div {
+			width: 100%;
+
+			h3 {
+				color: black;
+				font-weight: normal !important;
+				font-size: 20px;
+			}
+
+			> div {
+				gap: 5px;
+
+				img:first-child {
+					width: 22px;
+
+					cursor: pointer;
+				}
+
+				img:last-child {
+					width: 21px;
+
+					cursor: pointer;
+				}
+			}
+		}
+	}
+
+	.node-content {
+		padding-inline: 10px;
+
+		.info {
+			gap: 20px;
+
+			p {
+				text-align: center;
+
+				color: grey;
+			}
+		}
+
+		.result {
+			width: 100%;
+			height: 200px;
+			margin-block: 10px;
+
+			background-color: #F4F4F4;
+
+			border-radius: 10px;
 		}
 	}
 }
