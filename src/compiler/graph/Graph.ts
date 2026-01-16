@@ -46,8 +46,6 @@ class Graph {
 				!edge.targetHandle.split(',').includes('input')
 			) return;
 
-			console.log(edge);
-
 			const sourceNode: Node = nodes.filter(node => (node.getID() === edge.source))[0];
 			const targetNode: Node = nodes.filter(node => (node.getID() === edge.target))[0];
 

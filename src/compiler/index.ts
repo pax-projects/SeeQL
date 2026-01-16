@@ -11,14 +11,15 @@ const queryGraphToCode = (userGraph: any) => {
 
 	if (asts.length === 0) return;
 
-	// const sql = 'SELECT name, age FROM users WHERE age > 18 AND name IN ("Max", "Mey") ORDER BY age DESC;';
+	const sql = 'SELECT name, age FROM users WHERE age > 18 AND name IN ("Max", "Mey") AND x > 0 ORDER BY age DESC;';
 
-	// const ast = parser.astify(sql, { database: 'mysql' });
+	const ast = parser.astify(sql, { database: 'mysql' });
+	console.log("ASTIFIED", ast);
 
 	// console.log('AST:', JSON.stringify(ast, null, 2));
 
-	const backToSql = parser.sqlify(asts[0], { database: 'mysql' });
-	console.log('SQL rebuilt:', backToSql);
+	// const backToSql = parser.sqlify(asts[0], { database: 'mysql' });
+	// console.log('SQL rebuilt:', backToSql);
 }
 
 const codeToGraph = (sqlCode: string) => {

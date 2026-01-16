@@ -1,3 +1,5 @@
+import { Parser } from "node-sql-parser";
+
 import { Node } from "./Node.ts";
 
 class GraphParser {
@@ -22,98 +24,111 @@ class GraphParser {
 	static #genSelect(root: Node) {
 		const flatten_nodes = GraphParser.#generator(root);
 
-		console.log(root)
+		console.log("ROOT", root);
 
-		const selectStatement = {
-			with: null,
-			type: "select",
-			options: null,
-			distinct: null,
-			columns: GraphParser.#processColumns(root.getData().fields),
-			from: GraphParser.#getFromBlock(flatten_nodes.get("from")),
-			where: GraphParser.#getWhereBlock(flatten_nodes.get("where")),
-			groupby: GraphParser.#getGroupByBlock(flatten_nodes.get("group_by")),
-			having: GraphParser.#getHavingBlock(flatten_nodes.get("having")),
-			orderby: GraphParser.#getOrderByBlock(flatten_nodes.get("order_by")),
-			limit: GraphParser.#getLimitBlock(flatten_nodes.get("limit")),
-		}
+		const statement = [
+			`SELECT`,
+			GraphParser.#processColumns(root.getData().fields),
+			GraphParser.#getFromBlock(flatten_nodes.get("from")),
+			GraphParser.#getJoinOnBlock(flatten_nodes.get("join")),
+			GraphParser.#getWhereBlock(flatten_nodes.get("where")),
+			GraphParser.#getGroupByBlock(flatten_nodes.get("groupBy")),
+			GraphParser.#getHavingBlock(flatten_nodes.get("having")),
+			GraphParser.#getOrderByBlock(flatten_nodes.get("order_by")),
+			GraphParser.#getLimitBlock(flatten_nodes.get("limit")),
+		]
+		.filter(datum => datum != null)
+		.join(' ');
 
-		// TODO: Check error in selectStatement
+		console.log(statement);
 
-		return selectStatement;
+		const parser = new Parser();
+		const ast = parser.astify(statement);
+
+		return ast;
 	}
 
 	// Substatements
 	static #getFromBlock(block: Node) {
 		if (!block) return null;
 
-		let data = [block.getData().field]
-		.map(datum => {
-			const new_datum = datum.split(/ as /i);
+		const data = [block.getData().field]
+		.filter(datum => !!datum);
 
-			return {
-				table: new_datum[0],
-				as: new_datum.length === 2 ? new_datum[1] : null
-			};
-		});
+		return `FROM ${data}`;
+	}
 
-		console.log("FROM-DATA", data);
+	static #getJoinOnBlock(block: Node) {
+		if (!block) return null;
 
-		return [{
-			"db": null,
-			"table": data[0].table,
-			"as": data[0].as
-		}];
+		const conditions = block.getData().fields.conditions
+		.filter(datum => !!datum)
+		.map(datum => datum.value)
+		.join(" AND ");
+
+		const table = block.getData().fields.table;
+
+		return `JOIN ${table} ON ${conditions}`;
 	}
 
 	static #getWhereBlock(block: Node) {
 		if (!block) return null;
 
-		return {};
+		const data = block.getData().fields
+		.filter(datum => !!datum)
+		.map(datum => datum.value)
+		.join(" AND ");
+
+		return `WHERE ${data}`;
 	}
 
 	static #getGroupByBlock(block: Node) {
 		if (!block) return null;
 
-		return {};
+		const data = block.getData().fields
+		.filter(datum => !!datum)
+		.map(datum => datum.value)
+		.join(", ");
+
+		return `GROUP BY ${data}`;
 	}
 
 	static #getHavingBlock(block: Node) {
 		if (!block) return null;
 
-		return {};
+		const data = block.getData().fields
+		.filter(datum => !!datum)
+		.map(datum => datum.value)
+		.join(" AND ");
+
+		return `HAVING ${data}`;
 	}
 
 	static #getOrderByBlock(block: Node) {
 		if (!block) return null;
 
-		return {};
+		return `ORDER BY ${null}`;
 	}
 
 	static #getLimitBlock(block: Node) {
 		if (!block) return null;
 
-		return {};
+		return `LIMIT ${null}`;
 	}
 
 	// Expressions
 	static #processColumns(columns: Array<{[id: Number]: string}>) {
 		if (!columns) return null;
 
-		const res = [];
+		let res = [];
 
 		for (const elm of columns) {
-			res.push({
-				expr: {
-					type: "column_ref",
-					table: null,
-					column: elm.value
-				},
-				as: null,
-			});
+			res.push(elm.value);
 		}
 
-		return res;
+		res = res.filter(datum => !!datum);
+
+		return res.join(', ');
 	}
 }
 

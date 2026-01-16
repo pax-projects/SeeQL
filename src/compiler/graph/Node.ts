@@ -3,7 +3,7 @@ enum NodeTypes {
 	INSERT = "insert",
 	UPDATE = "update",
 	DELETE = "delete",
-	JOIN_ON = "join_on",
+	JOIN_ON = "join",
 	FROM = "from",
 	WHERE = "where",
 	GROUP_BY = "group_by",
